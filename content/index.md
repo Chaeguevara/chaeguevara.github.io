@@ -1,6 +1,11 @@
 ---
-title: Welcome to Quartz
+title: 추천 시스템 엔지니어로 거듭나자
 ---
+# 주요이력
+- 
+# 스터디
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+## 강화학습
+
+## 추천시스템
+[[강화학습 기반 추천시시스템 스터디 스케쥴]]
