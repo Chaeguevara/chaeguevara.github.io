@@ -16,8 +16,8 @@
 - Dynamic과 Static enviroment의 차이는?
 
 # ML Expression and Variable Bindings
-- ML이라는 언어를 배우기보다는 *개념*을 배울 것임. 따라서 언어 보다는 ==**개념(단어)**==를 신경써야함
-- ML은 *binding*의 연속임
+- ML이라는 언어를 배우기보다는 *개념*을 배울 것임. 따라서 언어 보다는 **==개념(단어)==** 를 신경써야함
+- ML은 *==binding==* 의 연속임
 	- 각 *binding*에는 *type-check*이 수반되며, *type-check*이 진행된 후에 *evaluation*이 진행됨
 - 특정 *binding*이 가지는 type은 *static environment*에 달려있음
 	- 다시말해 *static environment*를 이용해 type을 지정함
