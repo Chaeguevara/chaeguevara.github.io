@@ -6,16 +6,15 @@
 	- ML, Racket, Ruby는 도구일 뿐임
 - 대부분 *[[Functional programming]]* 을 진행할 것임
 
+---
+
 # 용어
 - *Static envinroment* : type을 판별하는 환경을 뜻하는 것으로 보임. 즉 Python과는 다르게 Java 또는 C 환경에서 타입을 한번 지정하면 바꾸지 못하는 것을 생각하면 되는 것으로 보임
 - *Dynamic envinroment* : Value를 판별할떄 쓰임. 어떤 변수에 할당된 값이 계속 변할 수 있는 것에서 착안한 듯. 즉 a=7, a=12 처럼 계속변하는(dynamic) 상황에서 착안한 이름인 듯
 - *binding* : 변수와 Expressio을 묶는(binding) 행위.
 - *Read-eval-print-loop*
  
-# Study Question
-- Dynamic과 Static enviroment의 차이는?
-- Current, any ___ environment 의 차이는? 
-
+---
 # ML Expression and Variable Bindings
 - ML이라는 언어를 배우기보다는 *개념*을 배울 것임. 따라서 언어 보다는 **==개념(단어)==** 를 신경써야함
 - ML은 *==binding==* 의 연속임
@@ -24,6 +23,9 @@
 	- 다시말해 *static environment*를 이용해 type을 지정함
 - *binding*의 `evaluation`은 *Dynamic environment*에 달려있음
 	- *Dynamic environment*를 이용해 `evaluation`을 하게됨
+
+
+---
 ## Syntax
 - 어떻게 쓰는지(writing)
 - *variable binding*의 예시를 보면 다음과 같음
@@ -81,6 +83,11 @@
 > 
 > `evaluation rule` (Evaluate 하는 방법)
 
+
+---
+# Study Question
+- Dynamic과 Static enviroment의 차이는?
+- Current, any ___ environment 의 차이는? 
 
 
 #Programming #StandardMachineLanguage #Coursera
