@@ -9,10 +9,10 @@
 ---
 
 # 용어
-- *Static envinroment* : type을 판별하는 환경을 뜻하는 것으로 보임. 즉 Python과는 다르게 Java 또는 C 환경에서 타입을 한번 지정하면 바꾸지 못하는 것을 생각하면 되는 것으로 보임
-- *Dynamic envinroment* : Value를 판별할떄 쓰임. 어떤 변수에 할당된 값이 계속 변할 수 있는 것에서 착안한 듯. 즉 a=7, a=12 처럼 계속변하는(dynamic) 상황에서 착안한 이름인 듯
-- *binding* : 변수와 Expressio을 묶는(binding) 행위.
-- *Read-eval-print-loop*
+- ***Static envinroment*** : type을 판별하는 환경을 뜻하는 것으로 보임. 즉 Python과는 다르게 Java 또는 C 환경에서 타입을 한번 지정하면 바꾸지 못하는 것을 생각하면 되는 것으로 보임
+- ***Dynamic envinroment*** : Value를 판별할떄 쓰임. 어떤 변수에 할당된 값이 계속 변할 수 있는 것에서 착안한 듯. 즉 a=7, a=12 처럼 계속변하는(dynamic) 상황에서 착안한 이름인 듯
+- ***binding*** : 변수와 Expressio을 묶는(binding) 행위.
+- *Read-eval-print-loop*(REPL) : 유저가 입력한 값이 1) 읽어지고 2) 계산되고 3) 그 결과가 유저에게 내보내지는 컴퓨터 환경
  
 ---
 # ML Expression and Variable Bindings
@@ -35,12 +35,12 @@
  
 ## Semantic
 - *type-check*와 *evaluation*에 대해 알아봐야함
-- "Current static enviroment"을 이용해 `e`에 대해 *type-check*를 하게 됨
+- "Current static environment"를 이용해 `e`에 대해 *type-check*를 하게 됨
 - `e`의 type(`t`)을 이용해 "new static environment"를 만듬
 	- "new static environment"의 다른점은 `x`의 type이 `t`가 되었다는 것
 
 ## Value
-- 더이상의 계산이 필요없는 상태. 다른말로 더이상 간략화를 할 수 없는 상태
+- 더이상의 계산이 필요없는 상태. 다른말로 **==더이상 간략화를 할 수 없는 상태==**
 	- 17은 *value*임.
 	- 8+9는 *==value==* 가 아님
 
@@ -101,10 +101,9 @@
 - variable binding 외에 *functional binding*이 존재한다
 	- **==즉 어떻게 function을 정의하고 사용하는지에 관한 얘기==**
 - 예시를 통해 살펴봄. $x^y$
-```
+``` sml
 fun pow (x:int, y:int) = (* correct only for y >= 0 *)
     if y=0
-
     then 1
     else x * pow(x,y-1)
 ```
@@ -135,10 +134,9 @@ fun pow (x:int, y:int) = (* correct only for y >= 0 *)
 		- e0 -> v0, e1 -> v1, ..., en ->vn
 		- v0는 Function이어야 한다
 - 아래코드는 `ans=64`의 결과를 만들 것임
-```
+``` sml
 fun pow (x:int, y:int) = (* correct only for y >= 0 *)
     if y=0
-
     then 1
     else x * pow(x,y-1)
 
@@ -158,7 +156,7 @@ val ans = cube(4)
 		- #1, #2 를 이용해 각 요소들을 불러올 수 있음
 			- #1 e, #2 e. e는 ta\*tb의 Type 구조를 가지고 있어야 함
 - Pair 사용 예시
-```
+``` sml
 fun swap (pr : int*bool) =
     (#2 pr, #1 pr)
 
@@ -188,27 +186,197 @@ fun sort_pair (pr : int*int) =
 	- `null` -> true if empty else false
 	- `hd` -> first element of list. *raising an exception* if list is empty
 	- `tl` -> tail of a list. *raising an exception* if list is empty
-```
+``` sml
 fun sum_list (xs : int list) =
-    if null xs
-
+    if null xs (* xs가 Null이면*)
     then 0
-    else hd(xs) + sum_list(tl xs)
+    else hd(xs) + sum_list(tl xs) (* xs의 hd와 recursion*)
 
+(* x에 대해 [x,...,1]*)
+(*int -> int list*)
 fun countdown (x : int) =
     if x=0
-
     then []
     else x :: countdown(x-1)
-
+(* (int list*int list) -> int list *)
 fun append (xs : int list, ys : int list) =
     if null xs
-
     then ys
     else (hd xs) :: append(tl xs, ys)
 ```
+- **==List와 관련된 Function은 대부분 recursion에 기반함==**
+	- 왜냐하면 **List의 길이를 알 수 없음**
+	- recursion을 위해서는 **`base`와 `recurse` 경우**로 나눠 생각해야함
+		- `base` : List가 empty인 경우, 답을 내놓는 경우
+		- `recurse` : 나머지 list를 이용해 답을 계산
+	- recursion을 통해 문제를 쉽게 풀 수 있음
+		- `append`
+``` sml
 
+(*(int*int) list -> int *)
+(* tuple list 의 tuple의 각 값을 더한 값을 Return *)
+fun sum_pair_list (xs : (int * int) list) =
+    if null xs (* empty  list -> 0*)
+    then 0
+    else #1 (hd xs) + #2 (hd xs) + sum_pair_list(tl xs) (* #1과 #2를 더하고, 다음 element에 대해 계속*)
 
+(* (int*int) list -> int list *)
+fun firsts (xs : (int * int) list) =
+    if null xs (* Empty list -> []*)
+    then []
+    else (#1 (hd xs))::(firsts(tl xs)) (* xs의 hd 중 첫번째를 뽑음*)
+
+(* (int*int) list -> int list *)
+fun seconds (xs : (int * int) list) =
+    if null xs
+    then []
+    else (#2 (hd xs))::(seconds(tl xs))
+
+(* (int*int) list -> int list *)
+fun sum_pair_list2 (xs : (int * int) list) =
+    (sum_list (firsts xs)) + (sum_list (seconds xs))
+```
+
+# Let Expression
+- Local variable을 정의할떄 쓰임
+- **Syntax**
+	- `let b1 b2 ... bn in e end`
+- **Type-check**
+	- 각 binding을 순서대로 돌아가며 check함
+		- 앞선 binding을 뒤에서 사용 가능
+	- 최종적으로 e 안에서 binding을 사용 가능
+``` sml
+let val x = 1 
+in
+	(let val x = 2 in x+1 end) (*여기서 x=2로 shadowing*) 
+	+ (let val y = x+2 in y+1 end) (*여기서 x=1*)
+	(* 최종 답은 7 *)
+end
+```
+- Function
+	- helper Function이 필요하며 다른 Function안에서 쓰이지 않을 때 let을 이용 정의 가능
+```sml
+(* int -> int list *)
+fun countup_from1 (x:int) =
+    let fun count (from:int, to:int) =
+            if from=to
+            then to::[]
+            else from :: count(from+1,to)
+    in
+        count(1,x) (*[1,...,x]*)
+	end
+```
+- 위 코드를 개선 가능.
+	- `x` 는 `count`가 정의될 때, 같은 환경안에 존재함. 따라서 `x`는 항상 같은 값으로 존재하게 됨
+	- 같은 scope의 다른 variable을 사용하는 것은 functional programming에서 흔한 테크닉임
+``` sml
+fun countup_from2 (x:int)=
+	let fun count(from:int)=
+		if from=x
+		then x::[]
+		else from :: count(from+1)
+	in
+		count 1
+	end
+```
+- Local variable을 이용 expensive computation을 줄일 수 있음
+``` sml
+(* exponential growth *)
+fun bad_max (xs : int list) =
+    if null xs
+    then 0 (* note: bad style; see below *)
+    else if null (tl xs)
+    then hd xs
+    else if hd xs > bad_max(tl xs) (* call once*)
+    then hd xs
+    else bad_max(tl xs) (* call twice*)
+
+(* linear growth *)
+fun good_max (xs : int list) =
+    if null xs
+    then 0 (* note: bad style; see below *)
+    else if null (tl xs)
+    then hd xs
+    else
+        (* for style, could also use a let-binding for hd xs *)
+        let val tl_ans = good_max(tl xs)
+        in
+            if hd xs > tl_ans
+            then hd xs
+            else tl_ans
+		end
+```
+- let expression을 이용해 $O(2^n)$을 $O(n)$으로 바꿈
+
+# Options
+- [[#Let Expression | 이전 예시]]에서 empty list를 잘 다루지 못함 
+	- empty -> 0.실제 max가 0이 아닌게 문제임
+	- 해당 문제를 합리적으로 해결할 필요가 있음
+	- 실제 max 값을 return하거나, list가 비어있어 no maximum을 표현할 필요가 있음
+	- options 사용 가능
+		- 0 또는 1개의 요소를 표현하게 됨
+			- `NONE`은 아무것도 없는 상태임. type : `'a option`
+			- `SOME e`. `e -> v`로 계산됨. type: `t option` `e`의 `type`이 `t`일때 성립함
+- `isSome`을 이용해서 활용 가능함
+	- `isSome(NONE) -> false`
+	- `valof(SOME e)` -> `SOME`이 가지고 있던 value(e의 계산 값)를 가져옴
+``` sml
+(* 앞에서 0으로 return 하는 문제를 해결함*)
+fun better_max (xs : int list) =
+    if null xs
+    then NONE
+    else
+        let val tl_ans = better_max(tl xs)
+        in if isSome tl_ans andalso valOf tl_ans > hd xs
+			then tl_ans
+           else SOME (hd xs)
+        end
+```
+- Local helper function을 이용 위 코드 개선
+	- 위 코드에서 `SOME`이 추가된 것 말고 크게 개선된 점이 없다
+``` sml
+fun better_max2 (xs : int list) =
+    if null xs
+    then NONE
+    else let (* fine to assume argument nonempty because it is local *)
+            fun max_nonempty (xs : int list) =
+                if null (tl xs) (* xs must not be [] *)
+                then hd xs (* Recursion으로 인해 맨 마지막 item 부터 시작 -> back tracking?*)
+                else let val tl_ans = max_nonempty(tl xs) 
+                     in
+                         if hd xs > tl_ans
+                         then hd xs
+                         else tl_ans
+					end
+		in
+            SOME (max_nonempty xs)
+		end
+```
+
+# Some Other Expressions and Operators
+- 유용한 operations
+- `e1 andalso e2` 
+- `e1 orelse e2`
+- `not e`
+- `e1 = e2` : compare
+- `not (e1 = e2)` better style **==`e1 <> e2`==**
+- `<,>,<=,>=`
+- `~e`
+
+# Lack of Mutation and Benefits Thereof
+- ML에서 `list`,`tuple`등의 내부 Item을 바꿀 수 없음
+- assignment statement가 존재하지 않는다
+- **==mutation이 불가능하다==**
+- Immutable은 강력한 기능 중 하나임
+	- aliasing을 방지함
+```sml
+fun sort_pair (pr : int*int) =
+    if (#1 pr) < (#2 pr)
+    then pr
+    else ((#2 pr),(#1 pr))
+```
+- 위 코드의 `then` branch 에서는 *copy*를 return 또는 `alias`를 return?
+	- 
 
 ---
 # Study Question
@@ -216,8 +384,10 @@ fun append (xs : int list, ys : int list) =
 - Current, any ___ environment 의 차이는? 
 - function is a value의 뜻은?
 - Function calls 부분이 잘 이해가 되지 않는다
+- immutable이 그렇게 중요한 이슈인가([[#Lack of Mutation and Benefits Thereof]])?
+	- 다시 말하면 aliasing을 다루는 문제가 어떤게 좋은 방법인지를 모르겠다. 왜냐하면 어떤 경우엔 aliasing을 일부러 발생시키는 경우도 있었음
 
 # Summary
 
 
-#Programming #StandardMachineLanguage #Coursera
+#Programming #StandardMachineLanguage #Coursera #functionalProgramming
