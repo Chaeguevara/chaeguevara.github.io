@@ -15,6 +15,8 @@ pre-requisite
 	- 2d plot
 - Basic Algebra를 알고 있으면 됨
 
+# [[Week1 - Numpy part]]
 
 
-#LinearAlgebra #deeplearningAI
+
+#LinearAlgebra #deeplearningAI #numpy 

@@ -16,6 +16,7 @@
  
 ---
 # ML Expression and Variable Bindings
+## 강의
 - ML이라는 언어를 배우기보다는 *개념*을 배울 것임. 따라서 언어 보다는 **==개념(단어)==** 를 신경써야함
 - ML은 *==binding==* 의 연속임
 	- 각 *binding*에는 *type-check*이 수반되며, *type-check*이 진행된 후에 *evaluation*이 진행됨
@@ -23,6 +24,9 @@
 	- 다시말해 *static environment*를 이용해 type을 지정함
 - *binding*의 `evaluation`은 *Dynamic environment*에 달려있음
 	- *Dynamic environment*를 이용해 `evaluation`을 하게됨
+
+## 코드
+[[Week1-Code#ML Expression and Variable Bindings]]
 
 
 ---
@@ -375,8 +379,35 @@ fun sort_pair (pr : int*int) =
     then pr
     else ((#2 pr),(#1 pr))
 ```
+
 - 위 코드의 `then` branch 에서는 *copy*를 return 또는 `alias`를 return?
-	- 
+	- ML에서는 aliasing이 되었는지 알 방법이 없다(?)
+	- Mutation이 안되니까 aliasing이 안됬다는 얘기?
+	- **==위 코드에서는 aliasing이 됨==**. 왜냐하면 좀 더 효율적이기 때문에
+	- 아래 예제는 비효율적인 방식임
+```sml
+fun sort_pair (pr : int*int) =
+    if (#1 pr) < (#2 pr)
+    then (#1 pr, #2 pr)
+    else ((#2 pr),(#1 pr))
+```
+
+- 위 방식으로 할 경우 새롭게 Pair를 만들기 때문에 비효율적임
+- 결론적으로, mutation이 안되기 때문에 aliasing이 된다해도 원본 데이터가 변형될 걱정을 하지 않아도 된다
+	- 또한 매 회 `copy`를 하는 방식이 아니기 때문에 좀더 효율적이다
+
+- 두번째 예제
+```sml
+fun append (xs : int list, ys : int list) =
+    if null xs
+    then ys
+    else (hd xs) :: append(tl xs, ys)
+```
+- 위 예제에서 `aliasing`이 일어나는가?
+	- 답할 수 없지만, 위 경우에는 yes임
+		- `ys`를 이용해 새 List를 만들고 있기 떄문임. `ys`를 이용해 공간을 절약함(메모리 얘기인 듯)
+
+
 
 ---
 # Study Question
