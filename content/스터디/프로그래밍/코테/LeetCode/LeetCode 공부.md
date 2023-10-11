@@ -30,6 +30,10 @@
 > [[723. Candy Crush]]
 > 
 > [[1325. Delete Leaves With a Given Value]]
+> 
+> [[22. Generate Parentheses]]
+
+
 
 
 

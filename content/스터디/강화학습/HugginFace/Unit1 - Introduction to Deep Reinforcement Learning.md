@@ -117,7 +117,7 @@ Continuous 의 경우 가능한 행동이 무한대임.
 - 어떤 상태가 될때 기대 보상 function을 학습시킴
 - 해당 state의 값은 expected discounted return(경제에서 말하는 annuity)
 - 어느 한 state에서 시작해, 해당 Policy를 따라갈 때 얻을 수 있는 보상으로 정의함
-	- Policy를 따른다는 것은, **=="가장 높은 값을 가지는 state방향으로 가는 것"==**을 뜻함
+	- Policy를 따른다는 것은, **=="가장 높은 값을 가지는 state방향으로 가는 것"==** 을 뜻함
 	- ![[Pasted image 20231011205409.png]]
 	- ![[Pasted image 20231011205432.png]]
 	- 
@@ -126,6 +126,12 @@ Continuous 의 경우 가능한 행동이 무한대임.
 
 # 스터디 질문
 - Policy-based 와 value-based 차이가 잘 이해가 가지 않는다.
+	- 보물찾기 게임을 예로들면 value-based는 각 위치의 기대보상을 써놓는 것이고
+	- Policy-based는 그 위치에서 무슨 행동을 해야할지를 써놓은 것이다.
+	- 보물찾기로 예를 통해 value-based의 단점과 Policy-based의 장점을 볼 수 있다. [[RL Course by David Silver - Lecture 7_Policy Gradient Methods#예시 2 Aliased Gridworld]]
 - Policy 방식에는 
+- value-based가 간접적으로 discounted expected Return이 가장 높은 방식을 찾는다면, state가 discrete하지 않는 경우 메모리에 문제가 생기지 않을까?
+	- infinite state space
+- 
 
 #ReinforcementLearning
