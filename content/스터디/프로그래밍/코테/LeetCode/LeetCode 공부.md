@@ -24,8 +24,11 @@
 
 > [!fail]
 > [[237. Delete Node in a Linked List]]
+> 
 > [[3. Longest Substring Without Repeating Characters]]
+> 
 > [[723. Candy Crush]]
+> 
 > [[1325. Delete Leaves With a Given Value]]
 
 

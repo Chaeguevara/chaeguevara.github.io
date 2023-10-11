@@ -91,4 +91,41 @@ Continuous 의 경우 가능한 행동이 무한대임.
 # 강화학습 문제를 해결하는 두가지 방법
 위에 나온 내용들은 강화학습의 전반적인 문제를 다뤘다. 그렇다면 이를 어떻게 해결할 수 있는지 알아봐야 한다.
 
+## The Policy π: the agent’s brain
+- Policy $\pi$는 agent의 뇌처럼 작동함
+- 주어진 state에서 행동을 알려주는 기능을 함
+	- 주어진 시점에 해야하는 행동을 나타냄
+![[Pasted image 20231011204313.png]]
+- Policy가 우리가 학습시키고자 하는 것
+- 최적의 Policy를 찾는게 우리의 목표임 $\pi^{*}$.
+	- 최적의 Policy란 기대보상(expected return)을 최대화 하는 것임
+- $\pi^{*}$를 찾는 방법은 두가지가 있음
+	1.  Policy-based method : 주어진 state에서 어떤 행동을 취해야 할지 직접적으로 배움(?)
+	2. Value-Based Method : 어떤 상태(state)에 있는 것이 더 가치있는지 알려줌으로서 더 가치있는 상태로 가는 행동을 학습시킴
+
+## Policy-Based Methods
+- 직접적으로 배운다.
+- 각 state에서 최적 액션의 mapping을 정의함. 또는 **해당 State에서 취해야 할 행동의 확률 분포를 생성함**
+![[Pasted image 20231011204858.png]]
+- _Deterministic_: a policy at a given state **will always return the same action.**
+	- $a = \pi(s)$
+	- ![[Pasted image 20231011205045.png]]
+- - _Stochastic_: outputs **a probability distribution over actions.**
+	- $\pi(a|s) = P[A|s]$
+	- ![[Pasted image 20231011205051.png]]
+## Value-based method
+- 어떤 상태가 될때 기대 보상 function을 학습시킴
+- 해당 state의 값은 expected discounted return(경제에서 말하는 annuity)
+- 어느 한 state에서 시작해, 해당 Policy를 따라갈 때 얻을 수 있는 보상으로 정의함
+	- Policy를 따른다는 것은, **=="가장 높은 값을 가지는 state방향으로 가는 것"==**을 뜻함
+	- ![[Pasted image 20231011205409.png]]
+	- ![[Pasted image 20231011205432.png]]
+	- 
+
+# My Summary
+
+# 스터디 질문
+- Policy-based 와 value-based 차이가 잘 이해가 가지 않는다.
+- Policy 방식에는 
+
 #ReinforcementLearning
