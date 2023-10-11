@@ -104,7 +104,7 @@ Continuous 의 경우 가능한 행동이 무한대임.
 	2. Value-Based Method : 어떤 상태(state)에 있는 것이 더 가치있는지 알려줌으로서 더 가치있는 상태로 가는 행동을 학습시킴
 
 ## Policy-Based Methods
-- 직접적으로 배운다.
+- 직접적으로 배운다. 각 state의 value를 학습시켜 간접적인 Trajectory를 만드는 방법이 아님. 해당 state에서 action을 Deterministic 또는 stochastic(행동의 확률 분포) 하게 표현함
 - 각 state에서 최적 액션의 mapping을 정의함. 또는 **해당 State에서 취해야 할 행동의 확률 분포를 생성함**
 ![[Pasted image 20231011204858.png]]
 - _Deterministic_: a policy at a given state **will always return the same action.**
@@ -129,7 +129,7 @@ Continuous 의 경우 가능한 행동이 무한대임.
 	- 보물찾기 게임을 예로들면 value-based는 각 위치의 기대보상을 써놓는 것이고
 	- Policy-based는 그 위치에서 무슨 행동을 해야할지를 써놓은 것이다.
 	- 보물찾기로 예를 통해 value-based의 단점과 Policy-based의 장점을 볼 수 있다. [[RL Course by David Silver - Lecture 7_Policy Gradient Methods#예시 2 Aliased Gridworld]]
-- Policy 방식에는 
+- Policy 방식이 다르다고 하지만 결국 reward를 정의해야 할 것. 이때 state value는 필요 없는건가?
 - value-based가 간접적으로 discounted expected Return이 가장 높은 방식을 찾는다면, state가 discrete하지 않는 경우 메모리에 문제가 생기지 않을까?
 	- infinite state space
 - 
