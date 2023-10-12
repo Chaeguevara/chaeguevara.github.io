@@ -46,6 +46,14 @@
 Grey 부분에서 좌우로 움직일 확률이 0.5가 되어 value-based에 비해 더 빠른 속도로 goal에 다다름
 
 
+# Policy Objective Function
+- 목표 : $\pi_{\theta}(s,a)$ Parameter $\theta$를 가진 Policy에 대해, 최적의 $\theta$를 찾는 것
+- $\pi_{\theta}$의 품질을 확인하는 방법은?
+- Episodic task, start value를 사용
+	- $J_1(\theta) = V^{\pi_{\theta}} = E_{\pi_{\theta}}[v_{1}]$
+- Continuing, average value
+	- J
+
 # Study Question
 - 여기 설명을 보면 Policy-based Stochastic RL의 장점을 주로 이야기하는 것으로 보임
 	- 그렇담 **==Policy-based Deterministic은 장점이 없다는 뜻인지==**

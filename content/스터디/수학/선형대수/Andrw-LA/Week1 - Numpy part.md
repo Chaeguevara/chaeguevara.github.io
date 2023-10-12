@@ -270,5 +270,8 @@ print(horz_stack)
 > [ [1 1 3 3]
     [2 2 4 4] ]
 ```
+# Summary
+- Index를 통해 row,column, element를 접근하는 방법은 Python 방식과 동일함
+
 
 #numpy #python 

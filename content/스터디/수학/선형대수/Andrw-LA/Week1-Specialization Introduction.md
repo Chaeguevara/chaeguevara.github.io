@@ -19,4 +19,5 @@ pre-requisite
 
 
 
+
 #LinearAlgebra #deeplearningAI #numpy 
