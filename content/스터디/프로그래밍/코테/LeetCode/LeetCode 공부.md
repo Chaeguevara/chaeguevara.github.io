@@ -32,6 +32,10 @@
 > [[1325. Delete Leaves With a Given Value]]
 > 
 > [[22. Generate Parentheses]]
+> 
+> [[894. All Possible Full Binary Trees]]
+
+
 
 
 
