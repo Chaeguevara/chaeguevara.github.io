@@ -22,7 +22,7 @@ section {
 }
 
 .text-highlight {
-  background-color: #51ee1888;
+  background-color: #fff23688;
   padding: 0 0.1rem;
   border-radius: 5px;
 }
@@ -95,6 +95,8 @@ a {
   }
 
   & article {
+    position: relative;
+
     & > h1 {
       font-size: 2rem;
     }
@@ -328,7 +330,6 @@ pre {
 
   &:has(> code.mermaid) {
     border: none;
-    position: relative;
   }
 
   & > code {

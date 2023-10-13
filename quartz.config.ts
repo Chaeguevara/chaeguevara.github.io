@@ -9,9 +9,9 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
-    baseUrl: "https://chaeguevara.github.io/",
+    baseUrl: "https://chaeguevara.pages.dev/",
     ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "created",
+    defaultDateType: "modified",
     theme: {
       typography: {
         header: "Schibsted Grotesk",
