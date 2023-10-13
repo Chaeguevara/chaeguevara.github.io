@@ -14,10 +14,11 @@
 		- 2) Memory 또는 Performance 분포가 하위인 경우
 - **Fail**
 	- 풀지 못해서 솔루션만 봄
-
+[[1689. Partitioning Into Minimum Number Of Deci-Binary Numbers]]
 
 > [!pass]
 > [[1570. Dot Product of Two Sparse Vectors]]
+> [[1689. Partitioning Into Minimum Number Of Deci-Binary Numbers]]
 
 > [!attention]
 > [[11. Container With Most Water]]
