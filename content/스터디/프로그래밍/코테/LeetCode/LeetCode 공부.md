@@ -9,18 +9,16 @@
 - **Pass**
 	- 온전히 혼자힘으로 30분 내에 푼 문제
 - **Attention**
-	- 풀었지만
-		- 1) 다른 사람의 코드를 참조해 내 스타일로 바꾼 경우
-		- 2) Memory 또는 Performance 분포가 하위인 경우
+	- 30분 초과한 문제
 - **Fail**
-	- 풀지 못해서 솔루션만 봄
-[[1689. Partitioning Into Minimum Number Of Deci-Binary Numbers]]
+	- 풀지 못한 문제
 
-> [!pass]
+> [!pass] Solved
 > [[1570. Dot Product of Two Sparse Vectors]]
+> 
 > [[1689. Partitioning Into Minimum Number Of Deci-Binary Numbers]]
 
-> [!attention]
+> [!attention] Time over
 > [[11. Container With Most Water]]
 
 > [!fail]
@@ -35,6 +33,10 @@
 > [[22. Generate Parentheses]]
 > 
 > [[894. All Possible Full Binary Trees]]
+> 
+> [[46. Permutations]]
+
+
 
 
 

@@ -25,7 +25,7 @@ pre-requisite
 graph LR
 	A[System of Sentence] -- complete --> B[Non-singular]
 	A -- Redundant --> C[Singular]
-	A -- Redundant --> C
+	A -- Contradict --> C
 ```
 
 
