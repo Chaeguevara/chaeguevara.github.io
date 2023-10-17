@@ -16,7 +16,14 @@
  
 ---
 # ML Expression and Variable Bindings
-## 강의
+> [!tldr] 변수 binding. 그리고 Syntax, Semantic, Value
+> 프로그래밍은 변수를 binding 하는 연속임. 즉 어떤 변수에 어떤 expression을 binding하는 과정을 연속하게 됨 가령 `val x = e;`라는 구문은 `x`에 `e`라는 expression을 binding하는 과정임
+> 이러한 binding 과정에서 **==Syntax, Semantic==** 을 살펴봐야함.
+> ==Syntax는 문법==과 같음. binding을 하기 위해 프로그램에서 약속한 binding 규칙으로 이해할 수 있음. 
+> 문법에 맞다고 모든게 말이 될 수 없듯이, binding이 맞는지 확인하기 위해서는 ==의미론적 접근이 필요함. 이를 semantic==이라 함. 변수에 어떤 expression을 binding 할때, syntax상에서는 그냥 쓸 수 있지만 ==데이터 타입이 맞는지 검수==하는 과정이 필요함
+> 마지막으로 ==value는 expression이 더이상 계산을 할 수 없는 상태가 된 것==을 뜻함. 예를 들면 1+1은 expression이고 2는 value가 됨
+
+
 - ML이라는 언어를 배우기보다는 *개념*을 배울 것임. 따라서 언어 보다는 **==개념(단어)==** 를 신경써야함
 - ML은 *==binding==* 의 연속임
 	- 각 *binding*에는 *type-check*이 수반되며, *type-check*이 진행된 후에 *evaluation*이 진행됨
@@ -25,30 +32,32 @@
 - *binding*의 `evaluation`은 *Dynamic environment*에 달려있음
 	- *Dynamic environment*를 이용해 `evaluation`을 하게됨
 
-## 코드
+## 1 코드
 [[Week1-Code#ML Expression and Variable Bindings]]
 
 
 ---
-## Syntax
+## 2 Syntax
 - 어떻게 쓰는지(writing)
 - *variable binding*의 예시를 보면 다음과 같음
 	- `val x = e;`
 	- `val`은 keyword, `x`는 변수, `e`는 *expression*
 	- `;`는 부수적인 요소지만 `read-eval-print loop`에서 typing을 끝냈다는 표시가 됨
  
-## Semantic
+## 3 Semantic
 - *type-check*와 *evaluation*에 대해 알아봐야함
 - "Current static environment"를 이용해 `e`에 대해 *type-check*를 하게 됨
 - `e`의 type(`t`)을 이용해 "new static environment"를 만듬
 	- "new static environment"의 다른점은 `x`의 type이 `t`가 되었다는 것
 
-## Value
+## 4 Value
 - 더이상의 계산이 필요없는 상태. 다른말로 **==더이상 간략화를 할 수 없는 상태==**
 	- 17은 *value*임.
 	- 8+9는 *==value==* 가 아님
 
-## Expression 예시
+## 5 Expression 예시
+> [!summary]
+> Expression이 맞는지 확인하기 위해서는 ==Syntax, Type-check(semantic), evaluation== 세가지를 확인해야함
 
 - **Integer constants**:
 	- Syntax : 숫자의 연속
@@ -91,8 +100,6 @@
 - `REPL`환경에서 여러 binding을 하나의 파일로 불러오면 편리함
 	- `use "foo.sml";`
 - 해당 파일의 타입은 `uint`임. 하지만 위 명령어를 통해 해당 파일안에 있는 모둔 binding을 불러옴
-
-
 
 
 # Variables are Immutable

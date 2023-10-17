@@ -95,7 +95,9 @@ $Reward = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$ 로 정의할 수 있음
 즉 reward를 계산하기 위해, Goal State까지의 계산을 반복하는 것이 아닌, immedate reward와 다음 state의 reward의 합을 할인한 값으로 나타냄
 
 아래 두 그림을 통해 효율성의 차이를 볼 수 있음
+
 ![[Pasted image 20231016235050.png|350]]![[Pasted image 20231016235103.png|350]]
+
 위의 오른쪽 경우를 식으로 다시 쓰면 아래와 같음
 $V(S_t) = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$
 위에서 개념을 간단하기 위해서 $\gamma=1$로 진행함(Discount 없음)
@@ -108,7 +110,7 @@ $V(S_t) = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$
 > 	2. 따라서 몇번의 과정을 통해 각 state를 계산하는 과정이 있을 것으로 보임. 이는 책에서도 나왔던 부분으로 기억함
 > 2. [[#Bellman equation, simplify our value estimation]]에서 Study Question(Huggin face에서 주어진 질문)
 > 	1. 만약 $\gamma$가 작아지거나(0,0.01) 큰것은 어떤 의미를 가지는가?
-> > [!done] 
+> > [!done] $\gamma$ 가 크면 Long-term, $\gamma$ 가 작으면 Short-term
 > > $\gamma$가 작다면 즉각적인 보상에 oriented된 value function이 되고, $\gamma$가 크면 Long-term reward도 고려하는 모델이 됨
 > > 예) 자율주행 차. 바로 앞에서 일어나는 일을 처리하는데 orient 또는 long-term의 기대보상에 따라 움직이는 자율주행 agent
 
