@@ -71,7 +71,9 @@ state-value function에서는 한 state로 부터 시작해, Policy $\pi$를 계
 ## The action value function
 Agent가 한 state에서 시작하고 첫 action을 취한 뒤 Policy $\pi$를 따라 행동했을 때 기대할 수 있는 보상을 기대 보상으로 정의하게 됨
 ![[Pasted image 20231016224041.png]]
-원문에서는 제대로 설명되지는 않았지만, 아마도 *==greedy action==* 을 policy로 했다면, 기대보상이 줄어드는 방향으로 움직이지 않기 때문에 아래와 같이 모든 state를 채우는 것이 아닌, 특정 state에만 value가 표시된 것으로 보임
+
+원문에서는 제대로 설명되지는 않았지만, 도 *==greedy action==* 을 policy로 했다면, 기대보상이 줄어드는 방향으로 움직이지 않기 때문에 아래와 같이 모든 state를 채우는 것이 아닌, 특정 state에만 value가 표시된 것으로 보임
+
 ![[Pasted image 20231016224219.png]]
 
 ## Value-based function의 문제점
@@ -87,11 +89,15 @@ Value-based function의 기대 보상을 계산하기 위해서는 다음 state�
 지금까지 방식은 한 State의 Value$V(S_t)$를 계산하기 위해서는 해당 state에서 policy를 따라 움직일때 기대보상을 다 더해야 했음(여기서 policy를 greedy라고 정의함). 이 과정을 그림으로 표현하면 아래와 같음
 
 ![[Pasted image 20231016231012.png |350]]![[Pasted image 20231016231230.png|350]]
+
 위 그림에서 볼 수 있듯, 한 State의 Value를 계산하기 위해서는 Goal까지의 State를 Policy를 따라 움직여야 함. 그리고, $V(S_\text{t+1})$에 대해 계산할때도 마찬가지로 Goal 까지 모든 State를 Policy를 따라 움직여 계산하게 됨
 
 ## Bellman Equation을 통한 빠른 계산
+
 $Reward = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$ 로 정의할 수 있음
+
 ![[Pasted image 20231016234938.png]]
+
 즉 reward를 계산하기 위해, Goal State까지의 계산을 반복하는 것이 아닌, immedate reward와 다음 state의 reward의 합을 할인한 값으로 나타냄
 
 아래 두 그림을 통해 효율성의 차이를 볼 수 있음
@@ -99,10 +105,48 @@ $Reward = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$ 로 정의할 수 있음
 ![[Pasted image 20231016235050.png|350]]![[Pasted image 20231016235103.png|350]]
 
 위의 오른쪽 경우를 식으로 다시 쓰면 아래와 같음
+
 $V(S_t) = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$
+
 위에서 개념을 간단하기 위해서 $\gamma=1$로 진행함(Discount 없음)
 
-# Study question
+# Monte Carlo vs Temporal Difference Learning
+Value function을 학습시키는 두가지 방식으로 이해하면 된다. Experience를 이용해 학습시킨다는 것이 동일한 점이다. 간략히 설명하면 Monte carlo(이하 MC)방법을 사용하면 episode의 모든 경험을 통해 학습하게 되고 반면에 Temporal Difference(TD)를 사용하기 되면 한 step($S_{t},A_{t},R_{\text{t+1}},S_{\text{t+1}}$)의 결과만 이용하게 된다.
+
+## MC : 에피소드가 종료될때 학습한다
+MC 방법은 한 에피소드가 끝날때 까지 기다려야하며 $G_{t}$를 $V(S_{t})$의 업데이트 타겟으로 삼는다.
+
+$V(S_t)=V(S_t)+\alpha[G_t-V(S_t)]$ ^7c91b1
+
+예시를 통해 MC를 이해하면 아래와 같다. 이때 아래와 같은 상황을 가정한다
+![[Pasted image 20231020061453.png]]
+- 항상 시작지점에서 시작한다
+- Agent(여기서는 쥐)는 Policy에 따라 행동한다
+- 행동을 취하면 reward와 다음 상태를 얻게 된다
+- 10번을 넘게 움직이면 이거나 고양이가 있는 위치에 다다르면 에피소드가 종료된다
+- 애피소드가 끝나는 시점에 다음과 [(State,Action,Reward,Next Sate)]의 `tuple list`를 가지게 됨
+- 위 `tuple list`를 이용해 $G_t$를 계산하고 $V(S_t)$를 업데이트 한다
+위 내용을 그림으로 살펴보면 아래와 같다
+![[Pasted image 20231020061937.png]]
+
+더 구체적인 예로 아래와 같은 경우를 들 수 있다
+- 모든 value function을 0으로 초기화 한다
+- Learning rate(lr)를 0.1, discount rate를 1로 설정한다 ^85b7fe
+- 쥐는 주어진 environment를 탐험한다
+
+아래 그림은 10회 초과 탐색을 진행했을때 모습이다
+![[Pasted image 20231020062156.png]]
+
+위 그림을 기반으로 $G_t$를 계산해보면 아래와 같다
+- $G_0=1+0+0+0+0+0+1+1+0+0$
+- $G_0=3$
+- lr은 0.1, discount rate는 1을 이용해 계산을 하면 다음과 같다([[#^85b7fe|lr설정부분 참조]])
+- Monte Carlo 식을 이용해 계산하면 다음과 같이 풀 수 있다([[#^7c91b1 | Monte carlo equation]])
+- $V(S_t)=V(S_t)+\alpha[G_t-V(S_t)]$
+- $V(S_t)=0+0.1*(3-0)$
+- $V(S_t)=0.3$
+
+# Study Question
 
 > [!question] 더 공부해 보기
 > 1. 위 value-based function에서 보면 마치 , $S_{\text{t+1}}$이 Goal 방향으로 이어질 것처럼 그려진 것으로 보임. 만약 다음 $S_{\text{t+1}}$이 다른 방향으로 가도, 위와같은 그림이 나오는가? 아니면 일종의 greedy action이 기 정의되어 있기 때문에 신경 쓸 필요가 없는 것인가?
@@ -113,6 +157,7 @@ $V(S_t) = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$
 > > [!done] $\gamma$ 가 크면 Long-term, $\gamma$ 가 작으면 Short-term
 > > $\gamma$가 작다면 즉각적인 보상에 oriented된 value function이 되고, $\gamma$가 크면 Long-term reward도 고려하는 모델이 됨
 > > 예) 자율주행 차. 바로 앞에서 일어나는 일을 처리하는데 orient 또는 long-term의 기대보상에 따라 움직이는 자율주행 agent
+> 3. TD에 대한 부분이 책에서는 TD(0)라고 쓰여있던데, 이 차이를 한번 확인해 볼 필요가 있음
 
 
 #ReinforcementLearning  #vlaue-basedFunction 

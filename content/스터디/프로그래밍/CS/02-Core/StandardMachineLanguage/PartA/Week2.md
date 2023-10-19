@@ -2,3 +2,6 @@
 
 
 ## Records : "Each-of" Type을 만드는 또다른 접근방법
+
+
+#StandardMachineLanguage 
