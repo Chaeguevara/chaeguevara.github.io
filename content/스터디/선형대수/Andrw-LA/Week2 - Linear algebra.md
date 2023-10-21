@@ -139,6 +139,49 @@ $$
 > 한 row내 또는 각 row간 특정 연산을 했을때 singularity에 변함이 없는 경우를 보여줌
 > 한 row에 임의의 scalar를 곱하거나, 한 row에 다른 row를 더한후 update해도 singularity에는 변함이 없음
 
+
+# Rank of a matrix
+## rank의 중요성
+한 matrix가 얼마나 많은 정보를 가지고 있는지를 뜻함
+
+## rank in ML
+이미지 압축 예제
+- Rank 200이미지를 각기 다른 Rank로 바꿀 시, 좀더 낮은 화질이지만 유사한 이미지를 얻을 수 있음
+- 각 equation이 정보를 전달 할 수 있으면 rank = rank +1로 할 수 있음
+- 정보를 전달할 수 있다는 것은 각 row가 서로 의존성이 없어야 함을 뜻함
+	- 하나의 row가 다른 row의 배(linear dependent)인 경우 rank는 1
+rank = rank - Dimension of solution space
+
+# Rank of a matrix in general
+3 by 3을 예시로 하면
+- 각 row 가 independant 하다면 -> rank(3)
+한 row가 다른 row에 dependent하면
+- Rank(2)
+==Row echelon form을 이용해 rank를 쉽게 구할 수 있음==
+
+
+# Row echelon form
+만드는 방법
+1. 각 row의 첫 coefficient로 나눔
+2. 두번째 row를 첫번째 row로 뺌
+3. 그러면 두번째 변수의 값을 구할 수 있음
+
+# Row echelon form in General
+- Upper triangle 형태가 도도록 만드는 것
+- Pivot은 각 row에서 가장 왼쪽의 non-zero위치를 뜻함
+- 따라서 Rank는 # of pivots가 됨
+- 일반적으로 pivot에 놓이는 숫자가 1이 되도록 함
+
+Row echelon form을 만들어 pivot을 갯수를 구하게 된다. 이 pivot을 통해 rank를 구한다.
+
+# Reduced row echelon form
+Diagonal에만 숫자가 있는 경우
+Rank와 Pivot이 같아야 함
+각 pivot 위의 값은 모두 0
+그래서 결론은
+
+
+
 # Summary
 
 # Questions

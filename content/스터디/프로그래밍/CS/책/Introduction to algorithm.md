@@ -5,7 +5,7 @@
 	- 예시) sorting algorithm
 		- Input : $\text{A sequence of n numbers} <a_1,a_2,...,a_n>$
 		- Output: $\text{A Permutation (recordering)} <a^{\prime}_1 \le a^{\prime}_2 \le...\le a^{\prime}_n>$
-	- input sequance를 `instance`라고 함. 일반적으로 `instance of a problem`
+	- input sequence를 `instance`라고 함. 일반적으로 `instance of a problem`
 	- 올바른 알고리즘은 주어진 계산 문제를 해결함
 		- 올바른 상태는 instance에 대해 문제를 해결하고
 		- 유한한 시간내에 문제를 해결함
