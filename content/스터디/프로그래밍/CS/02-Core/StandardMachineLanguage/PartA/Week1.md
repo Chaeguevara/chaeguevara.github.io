@@ -1,5 +1,5 @@
 
-# 목표
+# 1 목표
 - 특정 `언어`를 배우는 것이 아닌 `개념`을 배우는 것에 초점을 둠
 - 또한 개념들을 서로 "맞추는" 방법을 배울 것임
 - 프로그램 패러다임을 학습하는 것이 목적임
@@ -8,14 +8,14 @@
 
 ---
 
-# 용어
+# 2 용어
 - ***Static envinroment*** : type을 판별하는 환경을 뜻하는 것으로 보임. 즉 Python과는 다르게 Java 또는 C 환경에서 타입을 한번 지정하면 바꾸지 못하는 것을 생각하면 되는 것으로 보임
 - ***Dynamic envinroment*** : Value를 판별할떄 쓰임. 어떤 변수에 할당된 값이 계속 변할 수 있는 것에서 착안한 듯. 즉 a=7, a=12 처럼 계속변하는(dynamic) 상황에서 착안한 이름인 듯
 - ***binding*** : 변수와 Expressio을 묶는(binding) 행위.
 - *Read-eval-print-loop*(REPL) : 유저가 입력한 값이 1) 읽어지고 2) 계산되고 3) 그 결과가 유저에게 내보내지는 컴퓨터 환경
  
 ---
-# ML Expression and Variable Bindings
+# 3 ML Expression and Variable Bindings
 > [!tldr] 변수 binding. 그리고 Syntax, Semantic, Value
 > 프로그래밍은 변수를 binding 하는 연속임. 즉 어떤 변수에 어떤 expression을 binding하는 과정을 연속하게 됨 가령 `val x = e;`라는 구문은 `x`에 `e`라는 expression을 binding하는 과정임
 > 이러한 binding 과정에서 **==Syntax, Semantic==** 을 살펴봐야함.
@@ -32,30 +32,30 @@
 - *binding*의 `evaluation`은 *Dynamic environment*에 달려있음
 	- *Dynamic environment*를 이용해 `evaluation`을 하게됨
 
-## 1 코드
+## 3.1 코드
 [[Week1-Code#ML Expression and Variable Bindings]]
 
 
 ---
-## 2 Syntax
+## 3.2 Syntax
 - 어떻게 쓰는지(writing)
 - *variable binding*의 예시를 보면 다음과 같음
 	- `val x = e;`
 	- `val`은 keyword, `x`는 변수, `e`는 *expression*
 	- `;`는 부수적인 요소지만 `read-eval-print loop`에서 typing을 끝냈다는 표시가 됨
  
-## 3 Semantic
+## 3.3 Semantic
 - *type-check*와 *evaluation*에 대해 알아봐야함
 - "Current static environment"를 이용해 `e`에 대해 *type-check*를 하게 됨
 - `e`의 type(`t`)을 이용해 "new static environment"를 만듬
 	- "new static environment"의 다른점은 `x`의 type이 `t`가 되었다는 것
 
-## 4 Value
+## 3.4 Value
 - 더이상의 계산이 필요없는 상태. 다른말로 **==더이상 간략화를 할 수 없는 상태==**
 	- 17은 *value*임.
 	- 8+9는 *==value==* 가 아님
 
-## 5 Expression 예시
+## 3.5 Expression 예시
 > [!summary]
 > Expression이 맞는지 확인하기 위해서는 ==Syntax, Type-check(semantic), evaluation== 세가지를 확인해야함
 
@@ -96,18 +96,18 @@
 > 
 > `evaluation rule` (Evaluate 하는 방법)
 
-# Using use
+t# 4 Using use
 - `REPL`환경에서 여러 binding을 하나의 파일로 불러오면 편리함
 	- `use "foo.sml";`
 - 해당 파일의 타입은 `uint`임. 하지만 위 명령어를 통해 해당 파일안에 있는 모둔 binding을 불러옴
 
 
-# Variables are Immutable
+# 4 Variables are Immutable
 - Binding은 *Immutable*(변경 불가능)함
 - `val x = 8+9;` -> `val x = 17;` 로 dynamic environment안에서 수행됨
 - 이후 `val x = 19;`로 할 경우 이전 값이`shadowing`되며 이때 다른 environment를 만들게 된다.
 
-# Functional Bindings
+# 5 Functional Bindings
 - 각 binding은 static environment와 dynamic environment에 추가된다.
 - variable binding 외에 *functional binding*이 존재한다
 	- **==즉 어떻게 function을 정의하고 사용하는지에 관한 얘기==**
@@ -158,7 +158,7 @@ val ans = cube(4)
 ```
 
 
-# Pairs and Other Tuples
+# 6 Pairs and Other Tuples
 - 간단한 또는 복합 데이터를 만들 필요가 있음
 	- ML안에서 *pairs*를 이용할 수 있음
 		- Syntax : (e1,e2)
@@ -183,7 +183,7 @@ fun sort_pair (pr : int*int) =
     else ((#2 pr),(#1 pr))
 ```
 
-# Lists
+# 7 Lists
 - [[#Pairs and Other Tuples | Pair]]에 비해 유연한 구조를 가진 List
 	- Length 제한 없음
 	- 하지만 List안의 모든 요소는 같은 type이어야 함(cf. Python에서는 다른 Type도 가능)
@@ -248,7 +248,7 @@ fun sum_pair_list2 (xs : (int * int) list) =
     (sum_list (firsts xs)) + (sum_list (seconds xs))
 ```
 
-# Let Expression
+# 8 Let Expression
 - Local variable을 정의할떄 쓰임
 - **Syntax**
 	- `let b1 b2 ... bn in e end`
@@ -305,7 +305,7 @@ fun bad_max (xs : int list) =
 (* linear growth *)
 fun good_max (xs : int list) =
     if null xs
-    then 0 (* note: bad style; see below *)
+    then 0 
     else if null (tl xs)
     then hd xs
     else
@@ -319,7 +319,7 @@ fun good_max (xs : int list) =
 ```
 - let expression을 이용해 $O(2^n)$을 $O(n)$으로 바꿈
 
-# Options
+# 9 Options
 - [[#Let Expression | 이전 예시]]에서 empty list를 잘 다루지 못함 
 	- empty -> 0.실제 max가 0이 아닌게 문제임
 	- 해당 문제를 합리적으로 해결할 필요가 있음
@@ -364,7 +364,7 @@ fun better_max2 (xs : int list) =
 		end
 ```
 
-# Some Other Expressions and Operators
+# 10 Some Other Expressions and Operators
 - 유용한 operations
 - `e1 andalso e2` 
 - `e1 orelse e2`
@@ -374,7 +374,7 @@ fun better_max2 (xs : int list) =
 - `<,>,<=,>=`
 - `~e`
 
-# Lack of Mutation and Benefits Thereof
+# 11 Lack of Mutation and Benefits Thereof
 - ML에서 `list`,`tuple`등의 내부 Item을 바꿀 수 없음
 - assignment statement가 존재하지 않는다
 - **==mutation이 불가능하다==**
@@ -417,7 +417,7 @@ fun append (xs : int list, ys : int list) =
 
 
 ---
-# Study Question
+# 12 Study Question
 - Dynamic과 Static enviroment의 차이는?
 - Current, any ___ environment 의 차이는? 
 - function is a value의 뜻은?
@@ -425,7 +425,7 @@ fun append (xs : int list, ys : int list) =
 - immutable이 그렇게 중요한 이슈인가([[#Lack of Mutation and Benefits Thereof]])?
 	- 다시 말하면 aliasing을 다루는 문제가 어떤게 좋은 방법인지를 모르겠다. 왜냐하면 어떤 경우엔 aliasing을 일부러 발생시키는 경우도 있었음
 
-# Summary
+# 13 Summary
 
 
 #Programming #StandardMachineLanguage #Coursera #functionalProgramming

@@ -1,7 +1,7 @@
 ---
 created date: 2023-10-15
 ---
-# TLDR;
+# 1 TLDR;
 이 챕터의 내용을 요약해보면 다음과 같습니다.
 
 Value-based method와 Policy based method가 존재합니다. 그 중 이 챕터에서는 value-based method를 중심으로 설명을 진행합니다. **==Value-based method란==** 각 state 또는 각 state,action pair에 대한 ==value를 계산==함으로서 Optimal policy가 무엇인지 알아내는 방법입니다. 여기서 ==가정은 Optimal value function을 통해 Optimal policy를 찾을 수 있다는 점==입니다([[#3.1 Policy와 Value-baesd의 차이점]]). 여기서 언급한 state 또는 state,action pair에 대한 value를 각각 ==state value function, action value function== 이라고 칭합니다.
@@ -34,7 +34,7 @@ $$
 이 때 다음 state($S_{t+1}$)에 대한 action을 선택하는 방식이 조금 다른것을 볼 수 있습니다. 즉, 현재 State($S_{t}$)에서 action을 선택할 때는 이미 정의한 Policy를 따르는데 반해, 업데이트를 위해 ==다음 State에 대한 action을 선택할때는 또 다른 Policy(여기서는 greedy)를 사용==하는 것을 볼 수 있습니다. 이처럼 acting할때와 update할때 policy가 다른 경우를 [[#6.1.4.1 off-policy vs On-policy| off-policy]]방식이라고 합니다
 
 
-# 1 목표
+# 2 목표
 - Value-based methods 와 Q-Learning을 중심으로 진행함
 - Q-Learning Agent를 처음부터 implementation할 것임
 - Agent는 두가지 환경에서 학습 시킬 것임
@@ -42,7 +42,7 @@ $$
 	- An autonomous taxi: 도시를 누비며 승객을 A 지점에서 B 지점까지 태워다 주는 환경
 - Monte Carlo와 Temporal Difference Learning(TD)의 차이를 배우게 됨
 
-# 2 Overview
+# 3 Overview
 
 ```mermaid
 mindmap
@@ -55,7 +55,7 @@ mindmap
 ```
 
 ![[envs.gif]]
-# 3 Two types of value-based methods
+# 4 Two types of value-based methods
 > [!tldr] state-value 방식과 action-value function
 > **policy based method** : Policy를 바로 학습시키는 방법. 특정 State에 행할 action을 바로 알 수 있음
 > **Value based method** : state 또는 state, action의 조합에 대한 value를 계산함. 1)Policy를 미리 정하고 Policy에 따른 action을 계속 수행하고 2)학습을 통해 state 또는 action에 대한 value를 학습시켜 간접적으로 optimal policy를 구하게 됨
@@ -81,7 +81,7 @@ RL Agent의 목표는 Optimal Policy $\pi^{*}$를 ==소유하는 것임==
 
 어떤 경우에도 ==Policy는 가지게 됨==. Value-based에서 policy는 미리 정의한 간단한 function임
 
-## 3.1 Policy와 Value-baesd의 차이점
+## 4.1 Policy와 Value-baesd의 차이점
 다시 쓰면 이 둘의 차이점은 다음과 같음
 - ==Policy-baesd== : Optimal policy($\pi^{*}$)는 학습을 통해 바로 찾게 됨
 - ==Value-based== : optimal value function($Q^{*},V^{*}$)을 찾는 것이 optimal policy를 찾게 해줌
@@ -90,28 +90,28 @@ RL Agent의 목표는 Optimal Policy $\pi^{*}$를 ==소유하는 것임==
 
 보통은 **==Epsilon-Greedy Policy==** 를 사용해 [[Unit1 - Introduction to Deep Reinforcement Learning#Exploitation / Exploration|exploration/exploitation trade-off]]를 다루게 됨. Value-based function에는 **==두가지가 있음==**
 
-## 3.2 The state value function
+## 4.2 The state value function
 ![[Pasted image 20231016223712.png]]
 state-value function에서는 한 state로 부터 시작해, Policy $\pi$를 계속 따라갔을 때 기대할 수 있는 값을 **==기대 보상==** 으로 정의함
 
 만약 한 state에서 시작해, 한 step을 디딜때 마다 -1의 reward가 주어진다 할때 각 state의 value는 아래와 같이 정의 할 수 있음
 ![[Pasted image 20231016223844.png]] ^ec7b51
 
-## 3.3 The action value function
+## 4.3 The action value function
 Agent가 한 state에서 시작하고 첫 action을 취한 뒤 Policy $\pi$를 따라 행동했을 때 기대할 수 있는 보상을 기대 보상으로 정의하게 됨
 ![[Pasted image 20231016224041.png]]
 
 원문에서는 제대로 설명되지는 않았지만,  *==greedy action==* 을 policy로 했다면, 기대보상이 줄어드는 방향으로 움직이지 않기 때문에 아래와 같이 모든 state를 채우는 것이 아닌, 특정 state에만 value가 표시된 것으로 보임 
 ![[Pasted image 20231016224219.png]] ^cd4c33
 
-## 3.4 Value-based function의 문제점
+## 4.4 Value-based function의 문제점
 Value-based function의 기대 보상을 계산하기 위해서는 다음 state의 모든 value를 합해야하 함. ==즉 이미 계산된 값을 다시 계산하는 불편함이 존재함.== 이와 같은 반복 계산 문제를 해결하는 것이 [[#Bellman equation, simplify our value estimation | Bellman equation]]임
 
-# 4 Bellman equation, simplify our value estimation
+# 5 Bellman equation, simplify our value estimation
 > [!tldr] 강화학습게의 Dynamic programming
 > Dynamic programming은 이미 계산된 값을 기록(memo)하고 다시 꺼내 씀으로써 계산을 줄여주는 방식이다. 이와 유사하게 bellman equation에서는 현재 state의 value를 즉시 받는 보상과, 다음 state의 value를 할인한 것으로 정의하기 때문에 훨씬 효율적인 계산이 가능하다
 
-## 4.1 지루한 기존 방식
+## 5.1 지루한 기존 방식
 > 매 State에 대해 Goal 까지의 value를 매번 계산함
 
 지금까지 방식은 한 State의 Value$V(S_t)$를 계산하기 위해서는 해당 state에서 policy를 따라 움직일때 기대보상을 다 더해야 했음(여기서 policy를 greedy라고 정의함). 이 과정을 그림으로 표현하면 아래와 같음
@@ -120,7 +120,7 @@ Value-based function의 기대 보상을 계산하기 위해서는 다음 state�
 
 위 그림에서 볼 수 있듯, 한 State의 Value를 계산하기 위해서는 Goal까지의 State를 Policy를 따라 움직여야 함. 그리고, $V(S_\text{t+1})$에 대해 계산할때도 마찬가지로 Goal 까지 모든 State를 Policy를 따라 움직여 계산하게 됨
 
-## 4.2 Bellman Equation을 통한 빠른 계산
+## 5.2 Bellman Equation을 통한 빠른 계산
 
 $Reward = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$ 로 정의할 수 있음
 
@@ -138,10 +138,10 @@ $V(S_t) = R_{\text{t+1}}+\gamma*V(S_{\text{t+1}})$
 
 위에서 개념을 간단하기 위해서 $\gamma=1$로 진행함(Discount 없음)
 
-# 5 Monte Carlo vs Temporal Difference Learning
+# 6 Monte Carlo vs Temporal Difference Learning
 Value function을 학습시키는 두가지 방식으로 이해하면 된다. Experience를 이용해 학습시킨다는 것이 동일한 점이다. 간략히 설명하면 Monte carlo(이하 MC)방법을 사용하면 episode의 모든 경험을 통해 학습하게 되고 반면에 Temporal Difference(TD)를 사용하기 되면 한 step($S_{t},A_{t},R_{\text{t+1}},S_{\text{t+1}}$)의 결과만 이용하게 된다.
 
-## 5.1 MC : 에피소드가 종료될때 학습한다
+## 6.1 MC : 에피소드가 종료될때 학습한다
 MC 방법은 한 에피소드가 끝날때 까지 기다려야하며 $G_{t}$를 $V(S_{t})$의 업데이트 타겟으로 삼는다.
 
 $V(S_t)=V(S_t)+\alpha[G_t-V(S_t)]$ ^7c91b1
@@ -174,7 +174,7 @@ $V(S_t)=V(S_t)+\alpha[G_t-V(S_t)]$ ^7c91b1
 - $V(S_t)=0+0.1*(3-0)$
 - $V(S_t)=0.3$
 
-## 5.2 TD Learning : 각 단계에서 학습
+## 6.2 TD Learning : 각 단계에서 학습
 > [!tldr] $G_t = R_{t+1}+\gamma * V(S_{t+1})$
 > 위 [[#MC 에피소드가 종료될때 학습한다 | MC]]에서는 한 ==에피소드가 끝날때 업데이트== 를 시행했다. 나중에 이유를 설명하게 되겠지만, 한 에피소드가 아닌 한 스탭마다 업데이트를 시행하는 방식이 있다. ==이를 TD 방식이라 한다==. TD 방식은 기존의 $G_t$를 다른 식으로 정의했다는 것으로 이해할 수 있다.
 
@@ -209,7 +209,7 @@ V(S_t) = V(S_t)+\alpha[R_{t+1}+\gamma * V(S_{t+1})-V(S_t)] \\
 = 0.1
 \end{align*} 
 $$
-# 6 Introduction to Q-learning
+# 7 Introduction to Q-learning
 Q- learning 이란?
 	[[#TD Learning 각 단계에서 학습 | TD]]를 사용하는 [[#6.1.4.1 off-policy vs On-policy|off-policy]] [[#Two types of value-based methods | value-based ]]방식이다. Off-policy에 대한 설명은 이후에 이어진다. ==Q-learning은 Q-function==을 학습시키는 알고리즘이다. 이 Q-function을 이용해 특정 state에서 특정 action을 취했을때 value를 얻을 수 있다. ==즉, 어떤 상태에서 어떤 행동을 취하는게 보상이 큰지 정의하게 된다.== 그리고 여기서 Q는 Quality에서 따온 말이다
 
@@ -241,7 +241,7 @@ Q-table에 최초로 써있는것은 무쓸모지만, 업데이트를 할 수록
 
 ![[Pasted image 20231021123539.png]]
 
-## 6.1 The Q-Learning algorithm
+## 7.1 The Q-Learning algorithm
 > $Q(S_t,A_t):=Q(S_t,A_t)+\alpha(R_{t+1}+\gamma max_a Q(S_{t+1},a)-Q(S_t,A_t))$
 
 ^d4466e
@@ -249,12 +249,12 @@ Q-table에 최초로 써있는것은 무쓸모지만, 업데이트를 할 수록
 Pseudo code 
 ![[Pasted image 20231021123701.png]]
 
-### 6.1.1 Q-table을 초기화 함
+### 7.1.1 Q-table을 초기화 함
 여기에서는 모두 0으로 초기화함
 
 ![[Pasted image 20231021123734.png]]
 
-### 6.1.2 Epsilon-greedy를 이용해 action을 선택함
+### 7.1.2 Epsilon-greedy를 이용해 action을 선택함
 
 ![[Pasted image 20231021123839.png]]
 
@@ -262,10 +262,10 @@ Epsilon-greedy를 이용해 exploration/exploitation trade-off를 다루게된�
 
 ![[Pasted image 20231021124409.png]]
 
-### 6.1.3 Action At, reward Rt+1, next state St+1
+### 7.1.3 Action At, reward Rt+1, next state St+1
 ![[Pasted image 20231021124755.png]]
 
-### 6.1.4 Update Q(St,At)
+### 7.1.4 Update Q(St,At)
 
 ![[Pasted image 20231021125050.png]]
 
@@ -273,19 +273,19 @@ Epsilon-greedy를 이용해 exploration/exploitation trade-off를 다루게된�
 - TD Target을 구하기위해서는 Action($A_t$)를 통해 구한 $R_{t+1},S_{t+1}$을 이용하게 됨.
 	- 이 중 $S_{t+1}$에 대한 최적의 action에 greedy policy를 사용함. 이 부분에서 Policy의 차이를 볼 수 있음. 즉, action을 취할때는 episilon을 쓰지만 update를 할때는 greedy를 사용하게 됨
 
-#### 6.1.4.1 off-policy vs On-policy
+#### 7.1.4.1 off-policy vs On-policy
 
 ^2e9b29
 
 둘의 차이는 미묘하지만 아래와 같이 정리할 수 있음
 > [!quote] acting을 할때와 update를 할때 사용하는 Policy가 다른 경우
 
-#### 6.1.4.2 On-Policy
+#### 7.1.4.2 On-Policy
 > Update와 acting하는 경우 policy가 같은 경우
 
 ![[Pasted image 20231021130811.png]]
 
-# 7 A Q-Learning example
+# 8 A Q-Learning example
 ![[Pasted image 20231021131212.png]]
 **가정**
 - 위 미로에서 항상 같은 지점에서 시작한다
@@ -305,43 +305,43 @@ Epsilon-greedy를 이용해 exploration/exploitation trade-off를 다루게된�
 **알고리즘**
 - Q-Learning algorithm
 
-## 7.1 Step 1 : Q-table을 초기화함
+## 8.1 Step 1 : Q-table을 초기화함
 
 ![[Pasted image 20231021131742.png]]
 
 timestep 1에서 시작하면
 
-## 7.2 Step 2: Epsilon greedy를 이용해 action을 선택함
+## 8.2 Step 2: Epsilon greedy를 이용해 action을 선택함
 Epsilon=1인 상태기 때문에, 랜덤 액션을 취하게 됨.오른쪽으로 간다고 가정함
 ![[Pasted image 20231021131941.png]]
 
-## 7.3 Step 3: Action At를 행하고, Rt+1과 St+1을 얻음
+## 8.3 Step 3: Action At를 행하고, Rt+1과 St+1을 얻음
 치즈가 있는 위치로 이동하기 때문에 +1 리워드를 얻게 됨
 
 ![[Pasted image 20231021132046.png]]
 
-## 7.4 Step 4 : Update Q(St, At)
+## 8.4 Step 4 : Update Q(St, At)
 [[#^d4466e|식]]을 이용해 update를 할 수 있음
 
 ![[Pasted image 20231021133202.png]]
 
 Training timestep2로 넘어가게 됨
 
-## 7.5 Step 2: Epsilon greedy를 이용해 action을 선택함
+## 8.5 Step 2: Epsilon greedy를 이용해 action을 선택함
 이제 epsion=0.99이지만 여전히 큰 값이기 때문에 random action을 취하게 됨. 아래로 움직이게 되면 아래와 같이 진행되게 됨
 
 ![[Pasted image 20231021133438.png]]
 
-## 7.6 Step 3: Action At를 행하고, Rt+1과 St+1을 얻음
+## 8.6 Step 3: Action At를 행하고, Rt+1과 St+1을 얻음
 $R_{t+1}=-10$이 되고 terminate state가 됨
 
 ![[Pasted image 20231021133554.png]]
 
-## 7.7 Step 4 : Update Q(St, At)
+## 8.7 Step 4 : Update Q(St, At)
 ![[Pasted image 20231021133620.png]]
 
 
-# 8 Study Question
+# 9 Study Question
 
 > [!question] 더 공부해 보기
 > 1. 위 value-based function에서 보면 마치 , $S_{\text{t+1}}$이 Goal 방향으로 이어질 것처럼 그려진 것으로 보임. 만약 다음 $S_{\text{t+1}}$이 다른 방향으로 가도, 위와같은 그림이 나오는가? 아니면 일종의 greedy action이 기 정의되어 있기 때문에 신경 쓸 필요가 없는 것인가?
@@ -356,6 +356,8 @@ $R_{t+1}=-10$이 되고 terminate state가 됨
 > > [!done] TD(0)는 1 step에서 업데이트를 하는 방식
 > 4. Q-table에 저장되는것은 Q-function인가 value인가
 > 	1. Value가 더 맞는거 같다. Q-function은 하나로 정의되어 있으니까
+> 5. 여기서 Monte Carlo는 어떤 방식인가?
+> 	1. [[CH5 Monte Carlo Methods#3 Monte Carlo Prediction]]를 보면 first-visit MC method로 보임
 
 
 
