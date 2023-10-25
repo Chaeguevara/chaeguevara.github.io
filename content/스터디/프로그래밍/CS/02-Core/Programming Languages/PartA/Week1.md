@@ -12,7 +12,7 @@
 - ***Static envinroment*** : type을 판별하는 환경을 뜻하는 것으로 보임. 즉 Python과는 다르게 Java 또는 C 환경에서 타입을 한번 지정하면 바꾸지 못하는 것을 생각하면 되는 것으로 보임
 - ***Dynamic envinroment*** : Value를 판별할떄 쓰임. 어떤 변수에 할당된 값이 계속 변할 수 있는 것에서 착안한 듯. 즉 a=7, a=12 처럼 계속변하는(dynamic) 상황에서 착안한 이름인 듯
 - ***binding*** : 변수와 Expressio을 묶는(binding) 행위.
-- *Read-eval-print-loop*(REPL) : 유저가 입력한 값이 1) 읽어지고 2) 계산되고 3) 그 결과가 유저에게 내보내지는 컴퓨터 환경
+- *Read-eval-print-loop*(REPL) : 유저가 입력한 값이 1) 읽어지고 2) 계산되고 3) 그 결과가 유저에게 내보내지는 컴퓨터 환경 ^f2052c
  
 ---
 # 3 ML Expression and Variable Bindings
