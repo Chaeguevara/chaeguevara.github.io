@@ -1,3 +1,7 @@
+---
+category:
+  - rl
+---
 
 환경에 대해 전체를 파악하지 못할때 쓰는 방법. 즉 경험을 통해 학습하게 됨. 이 경험은 state, action, reward의 sequence를 뜻함.
 

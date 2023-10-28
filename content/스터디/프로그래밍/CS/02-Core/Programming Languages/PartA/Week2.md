@@ -1,3 +1,7 @@
+---
+category:
+  - Computer Science
+---
 # 1 새로운 Type을 만드는 개념적인 방법
 compound type을 만드는 방법은 여러가지가 있음
 - tuple, list, option 등이 존재함
