@@ -1,3 +1,7 @@
+---
+category:
+  - Computer Science
+---
 # ML Expression and Variable Bindings
 ```sml
 (* Programming Languages, Dan Grossman *)

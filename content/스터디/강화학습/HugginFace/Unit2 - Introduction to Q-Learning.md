@@ -1,5 +1,7 @@
 ---
 created date: 2023-10-15
+category:
+  - rl
 ---
 # 1 TLDR;
 이 챕터의 내용을 요약해보면 다음과 같습니다.
@@ -358,6 +360,10 @@ $R_{t+1}=-10$이 되고 terminate state가 됨
 > 	1. Value가 더 맞는거 같다. Q-function은 하나로 정의되어 있으니까
 > 5. 여기서 Monte Carlo는 어떤 방식인가?
 > 	1. [[CH5 Monte Carlo Methods#3 Monte Carlo Prediction]]를 보면 first-visit MC method로 보임
+
+# 10 Further Study
+직접 짜보자
+[[My Q-Learning]]
 
 
 

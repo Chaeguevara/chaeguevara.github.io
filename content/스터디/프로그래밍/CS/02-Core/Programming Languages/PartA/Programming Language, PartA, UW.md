@@ -1,3 +1,7 @@
+---
+category:
+  - Computer Science
+---
 
 # 1 Schedule
 - [[Week1]]
