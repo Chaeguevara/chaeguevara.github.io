@@ -166,7 +166,7 @@ https://www.youtube.com/watch?v=ajXb3N6QEqc
 Eigenspace는 TX후에도 자기 자신인 것들( Eigenvector로 정의 되는 각 선)
 
 
-좀더 자세한 내용은 [[CH6 - Eigenvalues and Eigenvectors]]에 정리하
+좀더 자세한 내용은 [[CH6 - Eigenvalues and Eigenvectors]]에 정리함
 
 
 #LinearAlgebra #math #eigenvalue #eigenvector
