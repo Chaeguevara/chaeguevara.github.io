@@ -101,5 +101,72 @@ $$
 \end{equation}
 $$
 
+# 2 Eigenvalues and Eigenvectors
+## 2.1 Bases in Linear Algebra 
 
-#LinearAlgebra #math 
+**Bases란?**
+
+![[Pasted image 20231029095958.png]]
+
+각 공간에 있는 점은 base의 조합으로 표현 가능함. 이 정의에 따르면 한 plane에서 base는 여러가지가 될 수 있음
+
+![[Pasted image 20231029100144.png]]
+
+**Base가 아닌경우?**
+
+![[Pasted image 20231029100216.png]]
+
+같은 방향의 두 벡터의 경우 base가 될 수 없음
+
+
+
+## 2.2 Span
+벡터 둘의 조합으로 다다를 수 있는 모든 점들
+두 벡터가 평행하지 않으면 ==평면==, 두벡터가 평행하면 ==라인==이 될 것임
+
+basis is a miniminal spanning set
+
+![[Pasted image 20231029100509.png]]
+
+한 선은 하나의 vector로 모든 span을 표현 가능함. 따라서 두개의 벡터가 있는경우 이 친구들은 basis가 될 수 없고 하나만 선택
+
+![[Pasted image 20231029100558.png]]
+평면은 두개의 벡터로 span을 만들 수 있음. 따라서 세개의 vector는 redundant하기 때문에 basis가 될 수 없음
+
+## 2.3 Eigenbaes
+PCA 등에 매우 중요한 개념임
+
+Matrix가 fundamental base에 미치는 영향
+
+![[Pasted image 20231029101428.png]]
+
+
+![[Pasted image 20231029101515.png]]
+Scale되는 경우
+**Stretch만 되는 경우**
+
+왜 유용한가 -> Linear Tx를 간편하게 표현 가능함
+
+![[Pasted image 20231029101652.png]]
+
+- Eigen vector : TX와 평행한 두 벡터
+- Eigen Value : Stretching value
+
+## 2.4 Eigenvalues and Eigenvectors
+Eigenvector를 찾는 법
+
+![[Pasted image 20231029102203.png]]
+
+https://www.youtube.com/watch?v=ajXb3N6QEqc
+
+평행사변형을 이용해 Linear transformation을 만듬
+
+![[Pasted image 20231029103222.png]]
+
+Eigenspace는 TX후에도 자기 자신인 것들( Eigenvector로 정의 되는 각 선)
+
+
+좀더 자세한 내용은 [[CH6 - Eigenvalues and Eigenvectors]]에 정리하
+
+
+#LinearAlgebra #math #eigenvalue #eigenvector
