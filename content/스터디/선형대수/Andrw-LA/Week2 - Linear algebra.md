@@ -1,6 +1,5 @@
 ---
-created date: 2023-10-15
-modified: 2023-10-30
+created date: 2023-10-04
 ---
 
 ## 0.1 Solving system of linear equations: Elimination
