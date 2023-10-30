@@ -1,8 +1,9 @@
 ---
 created date: 2023-10-15
+modified: 2023-10-30
 ---
 
-## Solving system of linear equations: Elimination
+## 0.1 Solving system of linear equations: Elimination
 다음 식을 푸는 과정
 $$
 \begin{align*}
@@ -25,7 +26,7 @@ Singular
 - Singular는 redundant와 contradict가 존재함
 - 이 경우 값이 소거가 되지 않거나 모순되기 때문에 **==무한한 값이 존재==** 하거나 **==답이 모순됨==**
 
-## Solving system of linear equations: Solving system of equations with more variables
+## 0.2 Solving system of linear equations: Solving system of equations with more variables
 
 다음과 같은 식이 있다면
 $$
@@ -65,7 +66,7 @@ $$
 마찬가지로 **==b가 isolated된 상태==** 임
 4. c를 구했으니 이를 다시 하나씩 대입하면 $a,b,c$를 구할 수 있음
 
-## System of equations to matrix
+## 0.3 System of equations to matrix
 > [!tldr] Matrix 와 row echelon form
 > equation을 푸는 과정에서 각 coefficeint를 elimination하게 됨. 이 과정에서 나오는 upper diagnaol matrix형태를 row-echelon form이라고 함. 여기에서 한단계 더 나아가, diagonal위에만 숫자가 남아있는 matrix를 reduced row-echelon form이라 칭함
 
@@ -112,7 +113,7 @@ $$
 \end{bmatrix}
 $$
 
-### Row echelon form
+### 0.3.1 Row echelon form
 아래와 같은 경우도 row echelon form 또는 upper diagonal matrix라고도 부름
 $$
 \begin{align*}
@@ -134,17 +135,17 @@ $$
 0 & 0
 \end{bmatrix}
 $$
-## Row operations that preserve singularity
+## 0.4 Row operations that preserve singularity
 > [!tldr] Row 연산을 해도 singularity에 변함이 없는 연산
 > 한 row내 또는 각 row간 특정 연산을 했을때 singularity에 변함이 없는 경우를 보여줌
 > 한 row에 임의의 scalar를 곱하거나, 한 row에 다른 row를 더한후 update해도 singularity에는 변함이 없음
 
 
-# Rank of a matrix
-## rank의 중요성
+# 1 Rank of a matrix
+## 1.1 rank의 중요성
 한 matrix가 얼마나 많은 정보를 가지고 있는지를 뜻함
 
-## rank in ML
+## 1.2 rank in ML
 이미지 압축 예제
 - Rank 200이미지를 각기 다른 Rank로 바꿀 시, 좀더 낮은 화질이지만 유사한 이미지를 얻을 수 있음
 - 각 equation이 정보를 전달 할 수 있으면 rank = rank +1로 할 수 있음
@@ -152,7 +153,7 @@ $$
 	- 하나의 row가 다른 row의 배(linear dependent)인 경우 rank는 1
 rank = rank - Dimension of solution space
 
-# Rank of a matrix in general
+# 2 Rank of a matrix in general
 3 by 3을 예시로 하면
 - 각 row 가 independant 하다면 -> rank(3)
 한 row가 다른 row에 dependent하면
@@ -160,13 +161,13 @@ rank = rank - Dimension of solution space
 ==Row echelon form을 이용해 rank를 쉽게 구할 수 있음==
 
 
-# Row echelon form
+# 3 Row echelon form
 만드는 방법
 1. 각 row의 첫 coefficient로 나눔
 2. 두번째 row를 첫번째 row로 뺌
 3. 그러면 두번째 변수의 값을 구할 수 있음
 
-# Row echelon form in General
+# 4 Row echelon form in General
 - Upper triangle 형태가 도도록 만드는 것
 - Pivot은 각 row에서 가장 왼쪽의 non-zero위치를 뜻함
 - 따라서 Rank는 # of pivots가 됨
@@ -174,7 +175,7 @@ rank = rank - Dimension of solution space
 
 Row echelon form을 만들어 pivot을 갯수를 구하게 된다. 이 pivot을 통해 rank를 구한다.
 
-# Reduced row echelon form
+# 5 Reduced row echelon form
 Diagonal에만 숫자가 있는 경우
 Rank와 Pivot이 같아야 함
 각 pivot 위의 값은 모두 0
@@ -182,6 +183,6 @@ Rank와 Pivot이 같아야 함
 
 
 
-# Summary
+# 6 Summary
 
-# Questions
+# 7 Questions

@@ -1,4 +1,7 @@
-# Numpy
+---
+modified: 2023-10-30
+---
+# 1 Numpy
 - Python list보다 훨씬 빠르며 편리함
 - numpy안에서 array를 `ndarray`라 하며 뜻은 **==N-차원의 배열==** 임
 ```python
@@ -6,7 +9,7 @@ one_dimensional_arr = np.array([10, 12])
 print(one_dimensional_arr)
 > [10 12]
 ```
-## 1-D array
+## 1.1 1-D array
 - `np.array()`는 list of values를 넣는다
 - `np.arange()`
 ```python
@@ -50,7 +53,7 @@ print(char_arr.dtype) # Prints the data type of the array
 > <U23
 ```
 - `U23` = unicode string이며 23 length
-## More on Numpy arrays
+## 1.2 More on Numpy arrays
 - `np.ones()` - Returns a new array setting values to one.
 - `np.zeros()` - Returns a new array setting values to zero.
 - `np.empty()` - Returns a new uninitialized array.
@@ -77,7 +80,7 @@ rand_arr = np.random.rand(3)
 print(rand_arr)
 > [0.94668249 0.35501222 0.77872198]
 ```
-# Multidimensional Arrays
+# 2 Multidimensional Arrays
 ```python
 # Create a 2 dimensional array (2-D)
 two_dim_arr = np.array([[1,2,3], [4,5,6]])
@@ -98,7 +101,7 @@ print(multi_dim_arr)
 > [[1 2 3]
  [4 5 6]]
 ```
-## Finding size, shape and dimension
+## 2.1 Finding size, shape and dimension
 - `ndarray.ndim` - Stores the number dimensions of the array.
 - `ndarray.shape` - Stores the shape of the array. Each number in the tuple denotes the lengths of each corresponding dimension.
 - `ndarray.size` - Stores the number of elements in the array.
@@ -122,7 +125,7 @@ multi_dim_arr.size
 > 6
 ```
 
-# Array math operations
+# 3 Array math operations
 - element wise addtion, subtraction, multiplication, division w/ 1-d or multidimensional
 	- `+`,`-`,`*`
 ```python
@@ -146,7 +149,7 @@ print(multiplication)
 > [ 2 12 30]
 ```
 
-## Multiplying vector with a scalar (broadcasting)
+## 3.1 Multiplying vector with a scalar (broadcasting)
 - 다른 `shape`를 가진 array간 계산을 가능하도록 하는 것
 ```python
 vector = np.array([1, 2])
@@ -154,10 +157,10 @@ vector * 1.6
 > array([1.6, 3.2])
 ```
 
-# Indexing and slicing
+# 4 Indexing and slicing
 - Indexing: array 안의 특정 item을 선택
 
-## Indexing
+## 4.1 Indexing
 ```python
 # Select the third element of the array. Remember the counting starts from 0.
 a = ([1, 2, 3, 4, 5])
@@ -180,7 +183,7 @@ print(two_dim[2][1])
 > 8
 ```
 
-## Slicing
+## 4.2 Slicing
 - sublist. Start to end(end exclusive) 
 - Syntax : `array[start:end:step]`
 ```python
@@ -233,7 +236,7 @@ print(sliced_two_dim_cols) # column vector가 1-d
 > array([2 5 8])
 ```
 
-# Stacking
+# 5 Stacking
 - horizontally, vertically 여러 array를 합치는 방법
 - `np.vstack()` - stacks vertically
 - `np.hstack()` - stacks horizontally
@@ -270,7 +273,7 @@ print(horz_stack)
 > [ [1 1 3 3]
     [2 2 4 4] ]
 ```
-# Summary
+# 6 Summary
 - Index를 통해 row,column, element를 접근하는 방법은 Python 방식과 동일함
 
 
