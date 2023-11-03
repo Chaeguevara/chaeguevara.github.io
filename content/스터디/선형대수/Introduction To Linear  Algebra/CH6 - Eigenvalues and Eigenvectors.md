@@ -1,6 +1,7 @@
 ---
 category:
   - math
+lastmod: 2023-11-03
 ---
 # 1 Introduction to Eigenvalues
 
@@ -122,7 +123,45 @@ $x_1$은 안정적인 상태($\lambda=1$)이고 $x_2$는 점차 줄어드는(dec
 
 위 $x_1$과 같이 안정적인 상태의 eigenvalu와 eigenvector를 가질 때 $\text{matrix }A$를 **Markov matrix**라고 하며 이 내용은 나중에 다룬다
 
+> [!example] Projection matrix를 $P$라 하면 $$P=\begin{bmatrix}.5 & .5 \\ .5 & .5\end{bmatrix}$$ eigenvalue는 $\lambda=1 , \lambda=0$
 
+그렇다면 위 조건을 통해 eigenvectors 를 구해보면 $x_1=(1,1)$ ,$x_2=(-1.1)$이 된다. 이 경우를 통해 `Markov matrices`, `singular matrices`, `symmetric matrices`를 알 수 있다. 그러니까 $P$가 이 세 속성을 가지는 친구라는 얘기래. $P$를 기준으로 이 세가지를 설명하면 이렇다:
+
+1. `Markov matrix` : $P$의 각 column의 값을 더하면 1이 된다. 그래서 $\lambda=1$이 된다 ^d0d12d
+2. $P$는 `singular`하다. 그래서 $\lambda=0$이 된다
+3. $P$는 `Symmetric`하다. 그렇기 때문에 $x_1=(1,1)$, $x_2=(-1.1)$이 직교한다
+
+위에서 [[#^d0d12d| Markov matrix]]부분이 잘 이해가 안가서 직접 풀어보면 아래와 같다. 
+$$
+\begin{align*}
+P = &
+	\begin{bmatrix}
+	a & b\\
+	c & d
+	\end{bmatrix}
+	\;\;\;
+	\text{where $a+c=b+d=1$} \\
+	& \text{by definition of getting eigenvector and eigenvalue} &&\\
+	Px &= \lambda x && \\
+	(P-\lambda I)x&=0 && \\
+	\begin{bmatrix}
+	a-\lambda & b \\
+	c & d-\lambda
+	\end{bmatrix}
+	x &= 0 && \\
+	\text{as }det(A) &= 0 && \\
+	&=(a-\lambda)(d-\lambda)-bc && \\
+	&=\lambda^2 -(a+d)\lambda +ad-bc && \\
+	&\text{By Solution of quadratic equation} && \\
+	\lambda &= \frac{a+d\pm\sqrt{(a+d)^2-4(ad-bc)}}{2} && \\
+	&= \frac{a+d\pm\sqrt{(a-d)^2+4bc}}{2} && \\
+	&= \frac{a+d\pm\sqrt{(b-c)^2+4bc}}{2} && \\
+	&= \frac{a+d\pm(b+c)}{2} && \\
+	&= 1, \frac{a-b-c+d}{2} && \\
+	&\therefore \lambda= 1, \frac{a-b-c+d}{2} && \\
+\end{align*}
+
+$$
 
  [^1]: 21. Eigenvalues and Eigenvectors_, (2019). Accessed: Oct. 29, 2023. [Online Video]. Available: [https://www.youtube.com/watch?v=cdZnhQjJu4I](https://www.youtube.com/watch?v=cdZnhQjJu4I) 
 

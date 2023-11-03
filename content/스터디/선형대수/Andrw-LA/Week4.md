@@ -1,6 +1,7 @@
 ---
 category:
   - math
+lastmod: 2023-11-03
 ---
 
 # 1 Determinants in Depth
