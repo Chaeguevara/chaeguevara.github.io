@@ -1,8 +1,9 @@
 ---
 category:
   - Computer Science
+lastmod: 2023-10-04
 ---
-# ML Expression and Variable Bindings
+# 1 ML Expression and Variable Bindings
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Our first ML program *)
@@ -39,8 +40,8 @@ val abs_of_z = if z < 0 then 0 - z else  z;
 val abs_of_z_simpler = abs z;
 ```
 
-# The REPL and Errors
-## error
+# 2 The REPL and Errors
+## 2.1 error
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Some Errors *)
@@ -66,7 +67,7 @@ val v = x / w
 val fourteen = 7 - 7
 ```
 
-## error fixed
+## 2.2 error fixed
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Some Errors *)
@@ -92,7 +93,7 @@ val v = x div (w + 1)
 val fourteen = 7 + 7
 ```
 
-# Shadowing
+# 3 Shadowing
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Examples to Demonstrate Shadowing *)
@@ -115,7 +116,7 @@ val a = a + 1
 val f = a * 2
 ```
 
-# Functions Informally
+# 4 Functions Informally
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: simple functions *)
@@ -135,7 +136,7 @@ val fortytwo = pow(2,2+2) + pow(4,2) + cube(2) + 2
 ```
 
 
-# Pairs and Other Tuples
+# 5 Pairs and Other Tuples
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Pairs and Tuples *)
@@ -168,7 +169,7 @@ val x3 = (#2 x1)      (* bool*int *)
 val x4 = ((3,5),((4,8),(0,0))) (* (int * int) * ((int * int) * (int * int)) *)
 ```
 
-# Introducing Lists
+# 6 Introducing Lists
 ```sml
 - [];
 val it = [] : 'a list
@@ -276,7 +277,7 @@ val it = fn : 'a list -> 'a list
 val it = [4] : int list
 ```
 
-# List Functions
+# 7 List Functions
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: List Functions *)
@@ -319,7 +320,7 @@ fun sum_pair_list2 (xs : (int * int) list) =
     (sum_list (firsts xs)) + (sum_list (seconds xs))
 ```
 
-# Let Expressions
+# 8 Let Expressions
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Let Expressions *)
@@ -338,7 +339,7 @@ fun silly2 () =
     end
 ```
 
-# Nested Functions
+# 9 Nested Functions
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Nested Functions *)
@@ -362,7 +363,7 @@ fun countup_from1_better (x : int) =
     end
 ```
 
-# Let and Efficiency
+# 10 Let and Efficiency
 
 ```sml
 (* Programming Languages, Dan Grossman *)
@@ -404,7 +405,7 @@ fun countdown(from : int, to : int) =
     else from :: countdown(from-1,to)
 ```
 
-# Options
+# 11 Options
 ```sml
 (* Programming Languages, Dan Grossman *)
 (* Section 1: Options *)

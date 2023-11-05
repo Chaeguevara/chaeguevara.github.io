@@ -1,6 +1,7 @@
 ---
 category:
   - Computer Science
+lastmod: 2023-11-04
 ---
 
 # 1 목표
