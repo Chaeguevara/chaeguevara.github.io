@@ -1,7 +1,7 @@
 ---
 category:
   - Computer Science
-lastmod: 2023-11-04
+lastmod: 2023-11-07
 ---
 # 1 새로운 Type을 만드는 개념적인 방법
 compound type을 만드는 방법은 여러가지가 있음
@@ -157,7 +157,24 @@ Constant 19 => 19
 Add(19,-4) => 19 -4 => 15
 ```
 최종적으로 15를 얻을 것이다
-# 8 Study question
+
+
+# 8 Type synonym
+카드를 가지고 예시를 들어본다
+```sml
+type card = suit*rank
+
+type name_record = {
+	studentNum : int option,
+	firstName : string,
+	middleName : string option,
+	lastName : string
+}
+```
+
+위 `card`를 중심으로 보면 type은 `card` -> `int`가 되거나 `suit*rank`->`int`가 된다. 두 표현은 달라도 완전히 동일하다
+
+# 9 Study question
 > [!question] function은 expression의 한 종류인가? 아니면 Expression이란 종국엔 value로 되는 경우만을 뜻하는가?
 > > [!check] Function은 expression이 아닌것으로 보임. [[Week1#3.5 Expression 예시|참조]]
 

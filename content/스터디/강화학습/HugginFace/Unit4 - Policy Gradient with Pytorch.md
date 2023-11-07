@@ -46,6 +46,17 @@ lastmod: 2023-11-05
 		- 위 그림에서 로봇 청소기는 1) 먼지만 청소해야 하고 2) 햄스터를 청소하면 안된다(죽이면 안된다)
 		- 로봇청소기의 문제는 벽이 어디있는지만 인지 할 수 있다
 		- 그 말은 위 그림의 ==빨간 부분==에서 로봇이 인지하는 것은 위아래 벽이 있다는 것 뿐이다
-		- 그렇다는 것은 deterministic policy 에서는 ==두 빨간 지점==에서 로봇이 행할 행동이 동일하다는 것이다. ==가령 왼쪽 빨간색에서 왼쪽으로 움직여야 하면 오른쪽 빨간지점에서도 왼쪽으로 움직여야 하는 것==이고 반대도 찬가지다. 
+		- 그렇다는 것은 deterministic policy 에서는 ==두 빨간 지점==에서 로봇이 행할 행동이 동일하다는 것이다. ==가령 왼쪽 빨간색에서 왼쪽으로 움직여야 하면 오른쪽 빨간지점에서도 왼쪽으로 움직여야 하는 것==이고 반대도 마찬가지다. 
 		- ![[Pasted image 20231105114121.png]]
 		- 위 경우 먼지를 찾기 위해 시간을 많이 소비하게 된다(위 그림을 통해 보면 오른쪽 빨간지점은 와리가리를 계속하게 된다)
+		- 반면 optimal stochastic policy상에서는 해당 위치에서 왼쪽 오른쪽 이동 확률이 동일하게 될 것이고 이것은 결과적으로 해당 구간 탈출이 더 잘 될 것이다. 이 내용을 그림으로 표현하면 아래와 같다
+		- ![[Pasted image 20231105115954.png]]
+- action space의 dimension이 높거나 [[Unit1 - Introduction to Deep Reinforcement Learning#5.1.2 Continuons = infinite|continuous actions space]]인 경우 더 유리함
+	- Deep Q-learning 때는 각 action에 점수를 부여했다. 근데 거의 무한한 행동이 가능한 경우에는 힘들다
+- Policy-gradient 방식이 더 잘 수렴한다
+	- 부드럽게 변화한다(?)
+
+## 4.2 단점
+- local maximum에 수렴하는 경우가 많다
+- 느리다.(비효율적이다-computationally)
+- high variance
