@@ -1,7 +1,7 @@
 ---
 category:
   - Computer Science
-lastmod: 2023-11-07
+lastmod: 2023-11-09
 ---
 # 1 새로운 Type을 만드는 개념적인 방법
 compound type을 만드는 방법은 여러가지가 있음
@@ -174,7 +174,104 @@ type name_record = {
 
 위 `card`를 중심으로 보면 type은 `card` -> `int`가 되거나 `suit*rank`->`int`가 된다. 두 표현은 달라도 완전히 동일하다
 
-# 9 Study question
+
+# 9 List and options are Datatypes
+- recursion을 이용해 필요ㄴ 데이터 타입을 만들 수 있다
+```sml
+datatype my_int_list = Empty
+						| Cons of int * my_int_list
+```
+- 위 성질을 이용하면 자신만의 리스트를 만들 수 있다.
+```sml
+val somthing = Cons(3,Cons(2,Cons(10,Cons(1,Empty))))
+```
+위 구조처럼 되있는것이 built-in List와 동일한 구조다. 그래서 append list를 해보면 다음과 같다
+
+```sml
+fun append(xs,ys)=
+	case xs of 
+	[] => ys
+	|x::xs' => x::append(xs',ys)
+```
+
+- Case Expression이 짱짱맨이다. null,hd,isSome,valOf 등을 안써도 된다. case expression으로 해결하는 방법은 아래처럼
+
+```sml
+fun inc_or_zero intoption=
+	case intoption of
+		SOME i => i+1
+		| NONE => 0
+```
+
+```sml
+fun sum_lists xs =
+	case xs of
+		x::xs' => x+sum_list xs'
+		| [] => 0
+```
+
+```sml
+fun append (xs,ys) =
+	case xs of 
+		[] => ys
+		| x::xs' => x::append(xs',ys)
+```
+
+- 위에서 쓰인 `x`나 `xs'`는 그냥 변수 이름일 뿐이다.
+- case expression이 짱짱맨인데 if else 따위를 쓰는 것은 argument를 다른 function에 건내주기 위해서다
+# 10 Polymorphic Datatypes
+- int list, int list list, (bool\*int)list 등이 여기 해당한다 -> 어떤 데이터 타입이라도 가지고 있을 수 있는 `list`
+- 내가 만든 데이터 타입에도 적용 할 수 있다
+```sml
+datatype 'a option = NONE | SOME of 'a
+```
+
+- t option 이 type이 된다
+- 갑자기 binary tree?
+
+```sml
+datatype ('a,'b) tree = Node of 'a * ('a,'b) tree * ('a,'b) tree
+						| Leaf of 'b
+```
+- 위 예제를 보면 `Node`는 `'a`타입을 가지고, `Leaf`는 `'b`타입을 가지고 있다
+
+# 11 Each-Of type에 Pattern matching 적용하기.  The truth about val-bindings
+- triple에 pattern matching을 적용해, 가지고 있는 값 3개를 더해보자
+```sml
+fun sum_triple (triple: int*int*int) =
+	case triple of
+		(x,y,z) => x+y+z
+```
+- 위와 비슷하 경우를 record
+```sml
+fun full_name (r: {first:string,middle:string,last:string}) =
+	case r of
+		{first=x,middle=y,last=z} => x^" "^y" "^z
+```
+- 근데 이렇게 branch 하나만 있으면 좀 그지같은 스타일이다. 왜냐하면 pattern matching이 여러 케이스를 다루기 위한거니까
+- 근데 each-of 타입은 여러 케이스가 없으니까 어떻게 위 값을 쉽게 뽑을까?
+	- val-binding을 사용하면 된다
+
+```sml
+fun sum_triple_val (triple: int*int*int) =
+	let
+		val (x,y,z) = triple
+		in
+			x+y+z
+		end
+```
+
+```sml
+fun full_name_val (r: {first:string, middle:string,last:string})=
+	let val {first=x,middle=y,last=z} = r
+	in
+		x ^ " " ^ y ^ " " ^ z
+	end
+
+```
+
+
+# 12 Study question
 > [!question] function은 expression의 한 종류인가? 아니면 Expression이란 종국엔 value로 되는 경우만을 뜻하는가?
 > > [!check] Function은 expression이 아닌것으로 보임. [[Week1#3.5 Expression 예시|참조]]
 

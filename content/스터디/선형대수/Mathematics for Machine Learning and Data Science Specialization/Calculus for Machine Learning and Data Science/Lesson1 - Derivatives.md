@@ -1,5 +1,5 @@
 ---
-lastmod: 2023-11-04
+lastmod: 2023-11-09
 ---
 # 1 Machine Learning Activation
 - Feature가 주어졌을때, 이를 통해
@@ -30,5 +30,37 @@ lastmod: 2023-11-04
 	- $f^{\prime}(x)$
 - *Leibniz's notation*
 	- $\dfrac{\mathrm{d}}{\mathrm{d}b}f(x)$
+
+# 6 Some common derivatives - Lines
+- $y = f(x) = c$
+	- 위 경우 slope = 0
+- $f(x) = ax+b$
+	- derivative = a
+
+# 7 Derivative of Quadratic Functions
+- $f(x) = x^2$
+- slope = $\frac{\Delta f}{\Delta x}=\frac{(x+\Delta)^2-(x)^2}{\Delta x}$ 
+- $\Delta x$를 아주 작게 굴려가면서 추정해보기 할 수 있음
+- $f^{\prime}(x) = 2x$
+
+# 8 Higher degree polynomial
+- Cubic : $y=f(x)=x^3$
+- $f^{\prime}(x) = 3x^2$
+-
+
+# 9 Other power functions
+- $y=f(x) = \frac{1}{x}$
+- $y=f^{\prime}(x) = -\frac{1}{x^2}$
+
+- $f(x) = x^n$
+- $f^{\prime}(x) = nx^{n-1}$
+
+# 10 Inversefunction
+- x -f-> x^2 -g-> x
+- 위 경우 g(x)와 f(x)는 inverse
+- $g(x)=f^{-1}(x)$
+- $f(x)=x^2, g(y)=\sqrt{y}$
+- $g^{\prime}(y)=\frac{1}{f^{\prime}(x)}$
+
 
 #derivative
