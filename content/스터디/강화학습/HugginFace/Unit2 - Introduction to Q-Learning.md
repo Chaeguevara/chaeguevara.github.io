@@ -1,8 +1,10 @@
 ---
-date: 2023-10-15
+due date: 2023-10-15
 category:
   - rl
 updated:
+lastmod: 2023-11-15
+완료됨: true
 ---
 # 1 TLDR;
 이 챕터의 내용을 요약해보면 다음과 같습니다.

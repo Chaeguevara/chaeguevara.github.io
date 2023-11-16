@@ -1,3 +1,7 @@
+---
+{}
+---
+
 # Solving Linear Systems: 2 variables
 - `Python`과 `numpy`를 쓰는 법을 학습하는게 주 목표임
 	- linear equation을 푸는 `numpy` 패키지 사용법ㅇ르 배움

@@ -1,7 +1,8 @@
 ---
 category:
   - Computer Science
-lastmod: 2023-10-04
+lastmod: 2023-11-15
+완료됨: true
 ---
 # 1 ML Expression and Variable Bindings
 ```sml

@@ -1,3 +1,7 @@
+---
+{}
+---
+
 # Value-Based 와 Policy-Based RL
 ![[Pasted image 20231011211717.png]]
 ## Value-based, Policy-Based의 장점

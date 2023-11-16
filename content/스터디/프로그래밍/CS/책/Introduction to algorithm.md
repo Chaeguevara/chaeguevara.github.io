@@ -1,3 +1,8 @@
+---
+category:
+  - ComputerScience
+---
+
 # CH1 The role of Algorithms in Computing
 - 알고리즘이란
 	- 어떤 값을 받고, 유한한 시간내에 처리해서 어떤 값 또는 값의 집합을 출력해주는 계산절차

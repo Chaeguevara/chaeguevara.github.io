@@ -1,7 +1,8 @@
 ---
 category:
   - Computer Science
-lastmod: 2023-11-09
+lastmod: 2023-11-11
+완료됨: true
 ---
 # 1 새로운 Type을 만드는 개념적인 방법
 compound type을 만드는 방법은 여러가지가 있음

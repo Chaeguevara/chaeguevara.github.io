@@ -1,3 +1,8 @@
+---
+category:
+  - rl
+---
+
 # 1 Introducction
 > 기존 방법으로 감당할 수 없는 state의 수. 비효율적인 Q-table
 

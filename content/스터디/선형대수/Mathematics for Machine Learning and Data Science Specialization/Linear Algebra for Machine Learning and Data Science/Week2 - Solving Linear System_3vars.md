@@ -1,3 +1,8 @@
+---
+category:
+  - math
+---
+
 
 numpy를 이용해 문제를 푸는 연습을 함
 
