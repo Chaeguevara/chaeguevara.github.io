@@ -1,10 +1,11 @@
 ---
-lastmod: 2023-11-16
+lastmod: 2023-11-17
 category:
   - ComputerScience
 due date: 2023-11-19
 Progress(10): 3
 중요도: 10
+완료됨: true
 ---
 # 1 Type inference란?
 > [!tldr] 작동 가능한 프로그램에서 각 변수의 type을 정하는 행위
