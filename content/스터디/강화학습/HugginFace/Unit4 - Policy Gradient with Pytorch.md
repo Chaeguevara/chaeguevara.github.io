@@ -2,7 +2,7 @@
 lastmod: 2023-11-05
 category:
   - rl
-due date: 2023-11-23
+due date: 2023-11-22
 ---
 # 1 Policy -based methods란?
 - 강화학습을 통해 찾고자 하는 것은 최적의 폴리시 $\pi^*$다. 이 폴리시는 기대보상을 합한 값을 최대화 시킨다

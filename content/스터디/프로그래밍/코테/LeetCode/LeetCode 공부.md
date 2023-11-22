@@ -1,6 +1,6 @@
 ---
-lastmod: 2023-11-15
-due date:
+lastmod: 2023-11-20
+due date: 
 category: []
 ---
 > [!abstract] 30분 내에 한 문제를 풀 수 없다면 아직 그 수준이 아닌 것이다
@@ -22,6 +22,14 @@ category: []
 > [[1570. Dot Product of Two Sparse Vectors]]
 > 
 > [[1689. Partitioning Into Minimum Number Of Deci-Binary Numbers]]
+> 
+> [[13. Roman to Integer]]
+> 
+> [[Letter Combinations of a Phone Number]]
+
+
+
+
 
 > [!attention] Time over
 > [[11. Container With Most Water]]
