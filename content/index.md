@@ -1,10 +1,9 @@
 ---
 title: AEC+O 잡부
-lastmod: 2024-03-15
+lastmod: 2024-03-18
 ---
-> [!abstract] DfMA 부터 Software Engineering 까지
-> 시작은 Facade를 중심으로 DfMA(Design for Manufacturing and Assembly) 수행이었습니다. 현장의 아저씨들과 각종 전문가들과 씨름하며 수많은 문제들을 해결해 나갔습니다. 하지만 사람의 욕심은 끝이 없습니다. 해당 과정을 기술적 성숙을 통해 해결하려는 욕심은 AEC 소프트웨어 엔지니어링을 하자는 결론에 이르게 했습니다. 이제는 물러날 곳이 없다. 두개다 잘 해보겠습니다.
-	
+![[Pasted image 20240318215551.png]]
+
 
 # 1 주요이력
 - 삼우종합건축사사무소, **==설계 자동화 기술 개발==** (2023.04~현재)
@@ -16,6 +15,8 @@ lastmod: 2024-03-15
 
 # 2 프로젝트
 ## 2.1 DfMA
+- [[파라다이스 시티(2018)]]
+- [[비정형 벽돌 구조 만들기(2017)]]
 ## 2.2 AEC Software Engineering
 
 ## 2.3 Research
