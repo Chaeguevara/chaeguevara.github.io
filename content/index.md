@@ -1,6 +1,6 @@
 ---
 title: AEC+O 잡부
-lastmod: 2024-03-18
+lastmod: 2024-03-31
 ---
 ![[Pasted image 20240318215551.png]]
 
@@ -18,6 +18,7 @@ lastmod: 2024-03-18
 - [[파라다이스 시티(2018)]]
 - [[비정형 벽돌 구조 만들기(2017)]]
 ## 2.2 AEC Software Engineering
+- [[타워 시각화 프로그램(2024)]]
 
 ## 2.3 Research
 
