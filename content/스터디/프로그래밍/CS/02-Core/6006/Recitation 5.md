@@ -1,8 +1,9 @@
 ---
-lastmod: 2024-04-09
+lastmod: 2024-04-10
 ---
 #MIT #LinearSorting 
-오늘도 신나게 해보자 알고리즘. Recitation5의 주제는 Linear Sort Algorithm이다. Sort를 몇강 울궈먹는 얘기 중 Lienar time $O(n)$으로 해결 가능한 알고리즘에 대해서 이야기한다. 내가 이해한 것을 기반으로 이야기하자면 Direct Access Array Sort -> Counting Sort -> Radix Sort 순서로 Linear Sorting Algorithm에 대해서 이야기 하는 내용이다. 그럼 타워다이브를 해본다
+
+오늘도 신나게 해보자 알고리즘. Recitation5의 주제는 Linear Sort Algorithm이다. Sort를 몇강 울궈먹는 얘기 중 Lienar time $O(n)$으로 해결 가능한 알고리즘에 대해서 이야기한다. 내가 이해한 것을 기반으로 이야기하자면 ==Direct Access Array Sort -> Counting Sort ->Tuple sort ->Radix Sort== 순서로 Linear Sorting Algorithm에 대해서 이야기 하는 내용이다. 그럼 타워다이브를 해본다
 
 
 # 1 Direct Access Array Sort
@@ -57,3 +58,34 @@ def direct_access_sort(A:list) -> None:
 > 2. $O(n)$의 Sort를 수행해야 하는데 $u$가 너무 큰거 아닌가?
 
 위 두가지를 차근차근 해결해 나가보면 결국 $O(n)$에 다다를 수 있다. 바로 이어지는 Counting Sort는 Key가 중복되는 문제를 해결해준다.
+
+# 2 Counting Sort
+> [!summary] Chain을 이용해 Direct Access Array Sort의 중복 key 문제를 해결한 $O(u)$알고리즘
+
+앞에서 살펴봤듯 Direct Access Array Sort를 이용하면, Sort를 수행할 수 있었습니다. 그러나 같은 key가 있다면 어떻게 될까요. 머리속으로 상상해보면 같은 Index에 두번 덮어쓰며 기존 array와 길이가 맞지 않을 것 입니다. 그렇다면 각 key가 중복되어도 작동하도록 바꿔줘야 합니다. 어떻게? nested array를 만들어 주면 됩니다.
+
+![[Pasted image 20240410081210.png]]
+
+위 Array를 보면 중복키가 있습니다. 그럼 아까와 같이 우선 array를 만들어 봅시다. 여기서 ==가장 큰 key 값은 300이기때문에 300== 크기의 array를 만듭니다.
+
+![[Pasted image 20240410081413.png]]
+
+그 후 각 item을 array에 넣어줍니다. 이때 원본의 순서를 꼭 지켜줍니다. 일단 지금은 잘 이해가 안되더라도 머리에 새기고 있어야 합니다. ==각 list에 넣을 때 원본의 순서를 지킨다. 이런 속성을 stabe==한 sort라 하는데 뒤에 따라올 내용을 위해 꼭 필요합니다.
+> [!warning] stable한 속성은 반드시 알고있자
+
+그럼 stable한 sort를 위해 Direct Access Array와 비슷한 작업을 다시 하면 아래 그림과 같습니다.
+
+![[Pasted image 20240410082252.png]]
+
+array를 이용해 중복 key값을 허용했습니다. 이때 원본 array에서 중복되는 아이템의 순서를 지키면서 새로생긴 array에 넣습니다. 자 그럼 문제는 여전히 남습니다.
+
+> [!question] 
+> 1. key값이 여전히 너무 크지 않느냐?
+> 2. stable한 속성을 어떻게 쓰라는 거냐?
+
+위 질문에 대한 힌트를 주는 것이 tuple sort입니다. 
+
+# 3 tuple sort
+> [!summary] 각 자리수를 기준으로 stable한 Sort를 수행하는 알고리즘
+
+tuple sort는 쉽게 설명하면 각 자리수에 집중해서 sort를 수행하는 방식입니다. 가작 작은 자리수를 기준으로 stable하게 정렬해 나가면 모든 아이템을 sort할 수 있는 방식입니다. 무슨소리냐. 저도 그려보면서 이해해보겠습니다.
