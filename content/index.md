@@ -1,6 +1,6 @@
 ---
 title: AEC+O 잡부
-lastmod: 2024-05-23
+lastmod: 2024-05-30
 ---
 ![[Pasted image 20240318215551.png]]
 
