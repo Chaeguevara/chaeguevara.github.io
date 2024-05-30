@@ -144,4 +144,4 @@ full_dfs = lambda Adj : full_xxx(Adj, dfs)
 
 ```
 
-위처럼 쓰면 `f`에 `dfs`를 입력받는다. 그러면 코드 안의 f가 dfs로 치환된다. 그리고 lambda로 코드를 짰기 때문에 function이 return되게 된다. 
+위처럼 쓰면 `f`에 `dfs`를 입력받는다. 그러면 코드 안의 f가 dfs로 치환된다. 그리고 lambda로 코드를 짰기 때문에 function이 return되게 된다. ss
