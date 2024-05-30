@@ -103,4 +103,45 @@ def add(x,y):
 	return x+y
 ```
 
-그럼 이런 상상을 해보자. 만약 어느 숫자에 6만 더해야한다면? 그럼 식은 $f(x,6)=x+6$으로 쓸 수 있다. 
+그럼 이런 상상을 해보자. 만약 어느 숫자에 6만 더해야한다면? 그럼 식은 $g(x)=f(x,6)=x+6$으로 쓸 수 있다. 여기서 $g(x)$를 만드는 법. 이것을 currying이라고 한다. 좀더 들어가면 functional programming에 대해서도 다뤄야 하는데 나도 까먹었으니 넘어가도록 하자.
+
+### 4.1.1 function을 return
+function을 return한다는게 가장 적당한 표현이다. 일반적으로 컴퓨터에서는 `()`를 마지막에 붙여주면 기능을 실행하는 것이라고 한다. 그럼 거꾸로 말하면 ()를 붙이지 않으면 function 그 자체를 가져갈 수 있다는 말이다. javascript에서는 아주 명확하게 보이는 패턴인데 python에서는 그냥 때려 넣어본다
+
+```python
+add_6 = lambda x: add(x,6)
+```
+이렇게 쓰면 된다. lambda라는게 계산된 값이 아니라 function을 내보내게 된다. 그래서 add_6는 현재 function을 가지고 있다. 이제 여기에 원하는 값을 넣으면 function이 작동하게 된다. 다른 구문으로는 아래와 같이 쓸 수 있다.
+
+```python
+def add_6(x):
+	return add(x,6)
+```
+자 그럼 위 패턴을 이용해 `Full_xxx`를 만들면 된다
+
+### 4.1.2 Full_xxx
+
+다시 Full_DFS를 가져오면...
+```python
+def full_DFS(Adj):
+	parent = [None]*len(Adj)
+	order = []
+	for v in len(Adj): #full scan
+		if parent[v] is None:
+			dfs(Adj,v,parent,order)#function
+```
+
+그럼 위의 dfs부분을 argument로 받아서 설정하도록 만들면 된다. 그럼 우선 function을 입력받도록 코드를 수정해야한다. lambda를 써서 하는 코드와 def를 써서 하는 방법이 다르기 때문에 lambda기준으로 먼저 써본다
+
+```python
+def full_xxx(Adj,f):
+	parent = [None]*len(Adj)
+	order = []
+	for v in len(Adj): #full scan
+		if parent[v] is None:
+			f(Adj,v,parent,order) #xxx
+full_dfs = lambda Adj : full_xxx(Adj, dfs)
+
+```
+
+위처럼 쓰면 `f`에 `dfs`를 입력받는다. 그러면 코드 안의 f가 dfs로 치환된다. 그리고 lambda로 코드를 짰기 때문에 function이 return되게 된다. 
