@@ -1,4 +1,0 @@
----
-category:
-  - Computer Science
----
